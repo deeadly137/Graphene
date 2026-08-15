@@ -21,10 +21,10 @@ const ARKA_DATA = {
             },
             capsuleState: "Em Espera",
             attributes: {
-                strength: 5,
-                dexterity: 5,
-                constitution: 5,
-                intelligence: 5
+                strength: 1,
+                dexterity: 1,
+                constitution: 1,
+                intelligence: 1
             }
         },
         {
@@ -42,10 +42,10 @@ const ARKA_DATA = {
             },
             capsuleState: "Hibernando",
             attributes: {
-                strength: 4,
-                dexterity: 6,
-                constitution: 5,
-                intelligence: 5
+                strength: 1,
+                dexterity: 1,
+                constitution: 1,
+                intelligence: 1
             }
         },
         {
@@ -63,10 +63,10 @@ const ARKA_DATA = {
             },
             capsuleState: "Desperto",
             attributes: {
-                strength: 6,
-                dexterity: 4,
-                constitution: 6,
-                intelligence: 4
+                strength: 1,
+                dexterity: 1,
+                constitution: 1,
+                intelligence: 1
             }
         }
     ],

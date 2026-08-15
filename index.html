@@ -64,6 +64,7 @@
 
     <!-- Overlay para mobile -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="arka-sidebar-overlay" id="arkaSidebarOverlay"></div>
 
     <!-- Main Content Wrapper -->
     <div class="main-content-wrapper">
@@ -80,10 +81,9 @@
                         </div>
                     </div>
                     <div class="bx--col-lg-8 bx--col-md-8 bx--col-sm-4" style="display: flex; align-items: center; justify-content: flex-end;">
-                        <a href="login.html" class="bx--btn bx--btn--primary" type="button">
-                            Área do Cliente
-                            <svg class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M9.3 3.7L13.1 7.5H1v1h12.1l-3.8 3.8.7.7 5-5-5-5-.7.7z"/>
+                        <a href="#" id="userIconLink" class="bx--btn bx--btn--ghost" type="button" aria-label="Acesso do Cliente">
+                            <svg class="bx--btn__icon" width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
+                                <path d="M16 15.503A5.503 5.503 0 1 0 16 4.497a5.503 5.503 0 0 0 0 11.006zm0-2a3.503 3.503 0 1 1 0-7.006 3.503 3.503 0 0 1 0 7.006zM5.5 30v-1.979c0-3.32 2.69-6.021 6.022-6.021h8.956C23.81 22 26.5 24.699 26.5 28.021V30H24.5v-1.979C24.5 25.805 22.816 24 20.478 24h-8.956C9.184 24 7.5 25.805 7.5 28.021V30H5.5z"/>
                             </svg>
                         </a>
                     </div>
@@ -164,7 +164,25 @@
             
             // Setup sidebar mobile
             setupMobileSidebar();
+            
+            // Setup header user icon
+            setupUserIcon();
         });
+        
+        // Setup header user icon based on auth state
+        function setupUserIcon() {
+            const userIcon = document.getElementById('userIconLink');
+            if (userIcon) {
+                userIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (ARKA_AUTH.isAuthenticated()) {
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        window.location.href = 'login.html';
+                    }
+                });
+            }
+        }
         
         // Setup sidebar responsiva
         function setupMobileSidebar() {
