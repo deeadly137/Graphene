@@ -6,6 +6,7 @@
 
 const ARKA_DASHBOARD = {
     TOTAL_ATTRIBUTE_POINTS: 20,
+    MAX_POINTS_PER_ATTRIBUTE: 5, // Máximo de pontos adicionais por atributo
     
     /**
      * Inicializa o dashboard
@@ -19,6 +20,41 @@ const ARKA_DASHBOARD = {
         this.renderNotifications();
         this.initAttributeSystem(user);
         this.setupLogout();
+        this.setupTabs();
+    },
+    
+    /**
+     * Configura navegação por abas
+     */
+    setupTabs() {
+        const tabLinks = document.querySelectorAll('.bx--tabs__nav-link');
+        const tabPanels = document.querySelectorAll('.bx--tab-content');
+        
+        tabLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove seleção de todas as tabs
+                document.querySelectorAll('.bx--tabs__nav-item').forEach(item => {
+                    item.classList.remove('bx--tabs__nav-item--selected');
+                });
+                
+                // Adiciona seleção na tab clicada
+                link.parentElement.classList.add('bx--tabs__nav-item--selected');
+                
+                // Esconde todos os painéis
+                tabPanels.forEach(panel => {
+                    panel.setAttribute('hidden', '');
+                });
+                
+                // Mostra o painel correspondente
+                const targetId = link.getAttribute('href').substring(1);
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.removeAttribute('hidden');
+                }
+            });
+        });
     },
 
     /**
@@ -145,18 +181,26 @@ const ARKA_DASHBOARD = {
         document.getElementById('btnRemoveConstitution').disabled = attrs.constitution <= 1;
         document.getElementById('btnRemoveIntelligence').disabled = attrs.intelligence <= 1;
         
-        // Botões de adicionar
-        const addButtons = [
-            'btnAddStrength', 'btnAddDexterity', 
-            'btnAddConstitution', 'btnAddIntelligence'
-        ];
+        // Botões de adicionar - verifica pontos disponíveis E limite por atributo
+        const baseValue = 1; // Valor base de cada atributo
         
-        addButtons.forEach(btnId => {
-            const btn = document.getElementById(btnId);
-            if (btn) {
-                btn.disabled = available <= 0;
-            }
-        });
+        const btnAddStrength = document.getElementById('btnAddStrength');
+        const btnAddDexterity = document.getElementById('btnAddDexterity');
+        const btnAddConstitution = document.getElementById('btnAddConstitution');
+        const btnAddIntelligence = document.getElementById('btnAddIntelligence');
+        
+        if (btnAddStrength) {
+            btnAddStrength.disabled = available <= 0 || (attrs.strength - baseValue) >= this.MAX_POINTS_PER_ATTRIBUTE;
+        }
+        if (btnAddDexterity) {
+            btnAddDexterity.disabled = available <= 0 || (attrs.dexterity - baseValue) >= this.MAX_POINTS_PER_ATTRIBUTE;
+        }
+        if (btnAddConstitution) {
+            btnAddConstitution.disabled = available <= 0 || (attrs.constitution - baseValue) >= this.MAX_POINTS_PER_ATTRIBUTE;
+        }
+        if (btnAddIntelligence) {
+            btnAddIntelligence.disabled = available <= 0 || (attrs.intelligence - baseValue) >= this.MAX_POINTS_PER_ATTRIBUTE;
+        }
     },
 
     /**
@@ -165,28 +209,28 @@ const ARKA_DASHBOARD = {
     setupAttributeControls() {
         // Adicionar pontos
         document.getElementById('btnAddStrength')?.addEventListener('click', () => {
-            if (this.canAddPoints()) {
+            if (this.canAddPoints('strength')) {
                 this.currentAttributes.strength++;
                 this.saveAndRender();
             }
         });
         
         document.getElementById('btnAddDexterity')?.addEventListener('click', () => {
-            if (this.canAddPoints()) {
+            if (this.canAddPoints('dexterity')) {
                 this.currentAttributes.dexterity++;
                 this.saveAndRender();
             }
         });
         
         document.getElementById('btnAddConstitution')?.addEventListener('click', () => {
-            if (this.canAddPoints()) {
+            if (this.canAddPoints('constitution')) {
                 this.currentAttributes.constitution++;
                 this.saveAndRender();
             }
         });
         
         document.getElementById('btnAddIntelligence')?.addEventListener('click', () => {
-            if (this.canAddPoints()) {
+            if (this.canAddPoints('intelligence')) {
                 this.currentAttributes.intelligence++;
                 this.saveAndRender();
             }
@@ -224,12 +268,34 @@ const ARKA_DASHBOARD = {
 
     /**
      * Verifica se pode adicionar pontos
+     * @param {string} attribute - Nome do atributo
      * @returns {boolean}
      */
-    canAddPoints() {
+    canAddPoints(attribute) {
         const attrs = this.currentAttributes;
         const used = attrs.strength + attrs.dexterity + attrs.constitution + attrs.intelligence;
-        return used < this.TOTAL_ATTRIBUTE_POINTS;
+        
+        // Verifica se há pontos disponíveis
+        if (used >= this.TOTAL_ATTRIBUTE_POINTS) {
+            return false;
+        }
+        
+        // Verifica limite por atributo
+        const baseValue = 1;
+        let currentValue = 1;
+        
+        switch(attribute) {
+            case 'strength': currentValue = attrs.strength; break;
+            case 'dexterity': currentValue = attrs.dexterity; break;
+            case 'constitution': currentValue = attrs.constitution; break;
+            case 'intelligence': currentValue = attrs.intelligence; break;
+        }
+        
+        if ((currentValue - baseValue) >= this.MAX_POINTS_PER_ATTRIBUTE) {
+            return false;
+        }
+        
+        return true;
     },
 
     /**
