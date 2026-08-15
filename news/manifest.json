@@ -1,0 +1,10 @@
+{
+  "news": [
+    { "id": "noticia-1", "slug": "tensoes-pacifico-nivel-critico" },
+    { "id": "noticia-2", "slug": "governo-anuncia-defesa-civil" },
+    { "id": "noticia-3", "slug": "bolsas-volatilidade-extrema" },
+    { "id": "noticia-4", "slug": "onu-desarmamento-nuclear" },
+    { "id": "noticia-5", "slug": "protocolos-abrigo-civis" },
+    { "id": "noticia-6", "slug": "graphene-expande-capsulas-arka" }
+  ]
+}

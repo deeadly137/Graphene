@@ -1,0 +1,13 @@
+{
+  "id": "noticia-3",
+  "title": "Bolsas internacionais registram volatilidade extrema",
+  "category": "Mercado Financeiro",
+  "date": "2024-01-14",
+  "author": "Editoria de Economia",
+  "contentHtml": "<p>Os principais índices bursáteis mundiais experimentaram oscilações bruscas nesta semana, refletindo a apreensão dos mercados diante do cenário geopolítico. O Dow Jones e o S&P 500 registraram quedas superiores a 3% em pregões consecutivos.</p><p>Investidores institucionais estão migrando massivamente para ativos considerados seguros, como ouro e títulos do Tesouro americano. Analistas recomendam cautela e diversificação de portfólio neste momento de alta incerteza.</p><p>O mercado de criptomoedas também sofreu com a fuga de capital de risco, com Bitcoin e Ethereum registrando correções significativas.</p>",
+  "fullDetails": {
+    "location": "Nova York, EUA",
+    "impactLevel": "Moderado",
+    "relatedTopics": ["Economia Global", "Investimentos", "Criptomoedas"]
+  }
+}

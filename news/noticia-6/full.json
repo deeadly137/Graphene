@@ -1,0 +1,13 @@
+{
+  "id": "noticia-6",
+  "title": "Graphene Corp. expande produção de cápsulas ARKA",
+  "category": "Tecnologia",
+  "date": "2024-01-11",
+  "author": "Redação de Tecnologia",
+  "contentHtml": "<p>A Graphene Corp. anunciou a inauguração de sua mais nova unidade de produção das cápsulas de hibernação ARKA. A tecnologia de ponta promete ser a única alternativa viável para preservação da vida humana em cenários de colapso global.</p><p>A nova fábrica, equipada com sistemas automatizados de última geração, permitirá triplicar a capacidade produtiva atual. Segundo o CEO da empresa, a demanda por cápsulas ARKA tem crescido exponencialmente entre indivíduos de alta renda preocupados com o futuro da humanidade.</p><p>Cada cápsula utiliza nanotecnologia em graphene para manter funções vitais em estado de animação suspensa por períodos indeterminados, garantindo que ocupantes despertem em condições ideais quando o ambiente externo estiver seguro.</p>",
+  "fullDetails": {
+    "location": "Sede da Graphene Corp.",
+    "impactLevel": "Comercial",
+    "relatedTopics": ["Biotecnologia", "Preservação Humana", "Inovação"]
+  }
+}

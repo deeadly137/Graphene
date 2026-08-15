@@ -1,0 +1,13 @@
+{
+  "id": "noticia-1",
+  "title": "Tensões no Pacífico atingem nível crítico",
+  "category": "Geopolítica",
+  "date": "2024-01-15",
+  "author": "Redação Internacional",
+  "contentHtml": "<p>As tensões geopolíticas na região do Pacífico atingiram um nível sem precedentes nas últimas 48 horas. Fontes militares confirmam o reposicionamento de frota navais estratégicas em pontos cruciais do oceano.</p><p>Analistas internacionais alertam que a situação pode escalar rapidamente caso não haja intervenção diplomática imediata. O comércio global já sente os efeitos, com rotas marítimas sendo desviadas e custos de frete aumentando exponencialmente.</p><p>Especialistas em defesa sugerem que as potências envolvidas estão utilizando a retórica agressiva como moeda de negociação, mas ressaltam que o risco de miscalculation militar é real e preocupante.</p>",
+  "fullDetails": {
+    "location": "Oceano Pacífico",
+    "impactLevel": "Crítico",
+    "relatedTopics": ["Defesa Nacional", "Comércio Internacional", "Diplomacia"]
+  }
+}

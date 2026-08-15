@@ -1,0 +1,13 @@
+{
+  "id": "noticia-2",
+  "title": "Governo anuncia novo programa de defesa civil",
+  "category": "Defesa Nacional",
+  "date": "2024-01-14",
+  "author": "Correspondente de Defesa",
+  "contentHtml": "<p>O Ministério da Defesa revelou hoje um abrangente programa de preparação civil para situações de crise. O plano inclui diretrizes para abrigos, estoque de suprimentos e protocolos de evacuação.</p><p>Segundo autoridades, a iniciativa não representa alarmismo, mas sim responsabilidade governamental diante de um cenário global cada vez mais imprevisível. Cidadãos são orientados a manterem kits de emergência em suas residências.</p><p>O programa também prevê parcerias com o setor privado para construção de abrigos subterrâneos comunitários em áreas urbanas densamente povoadas.</p>",
+  "fullDetails": {
+    "location": "Brasília, DF",
+    "impactLevel": "Alto",
+    "relatedTopics": ["Política Pública", "Segurança Nacional", "Preparação Civil"]
+  }
+}

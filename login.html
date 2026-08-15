@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Programa ARKA - Graphene Corp.</title>
+    
+    <!-- IBM Carbon Design System CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos customizados -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bx--body">
+    <!-- Sidebar Navigation -->
+    <nav class="arka-sidebar" id="mainSidebar">
+        <div class="arka-sidebar-header">
+            <span class="arka-sidebar-brand">GRAPHENE CORP.</span>
+        </div>
+        <ul class="arka-sidebar-nav">
+            <li class="arka-sidebar-item">
+                <a href="index.html" class="arka-sidebar-link">
+                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L2 14v14h10V18h8v10h10V14L16 2zm0 3.5l10 8.5v12H20v-10h-8v10H6V14l10-8.5z"/>
+                    </svg>
+                    <span class="arka-sidebar-label">Início</span>
+                </a>
+            </li>
+            <li class="arka-sidebar-item">
+                <a href="#sobre" class="arka-sidebar-link">
+                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>
+                        <path d="M16 20c-4.4 0-8 3.6-8 8h2c0-3.3 2.7-6 6-6s6 2.7 6 6h2c0-4.4-3.6-8-8-8z"/>
+                    </svg>
+                    <span class="arka-sidebar-label">Sobre Nós</span>
+                </a>
+            </li>
+            <li class="arka-sidebar-item">
+                <a href="index.html" class="arka-sidebar-link">
+                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M28 10H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2zm0 16H4V12h24v14zM20 6h-2V4h-4v2h-2c-1.1 0-2 .9-2 2v2h10V8c0-1.1-.9-2-2-2zm-2 4H14V8h4v2z"/>
+                    </svg>
+                    <span class="arka-sidebar-label">Notícias</span>
+                </a>
+            </li>
+            <li class="arka-sidebar-item">
+                <a href="login.html" class="arka-sidebar-link active">
+                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    </svg>
+                    <span class="arka-sidebar-label">Área do Cliente</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 32 32" fill="currentColor">
+            <path d="M4 6h24v2H4zM4 15h24v2H4zM4 24h24v2H4z"/>
+        </svg>
+    </button>
+
+    <!-- Overlay para mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content-wrapper">
+        <!-- Header -->
+        <header class="arka-header">
+            <div class="bx--grid">
+                <div class="bx--row">
+                    <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
+                        <div class="arka-brand">
+                            <div>
+                                <div class="arka-logo">GRAPHENE <span>CORP.</span></div>
+                                <div class="arka-slogan">"A continuação para uma nova humanidade"</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bx--col-lg-8 bx--col-md-8 bx--col-sm-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                        <a href="index.html" class="bx--btn bx--btn--tertiary" type="button">
+                            Voltar ao Portal
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="bx--grid">
+        <div class="bx--row">
+            <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
+                <div class="login-container">
+                    <div class="login-card">
+                        <h1 class="login-title">Acesso à Cápsula ARKA</h1>
+                        
+                        <!-- Notificação de erro (oculta por padrão) -->
+                        <div id="errorNotification" class="bx--inline-notification bx--inline-notification--error hidden" role="alert">
+                            <div class="bx--inline-notification__details">
+                                <svg class="bx--inline-notification__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zM9 4H7v5h2V4zm0 6H7v2h2v-2z"/>
+                                </svg>
+                                <p class="bx--inline-notification__text" id="errorMessage">Credenciais inválidas.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Formulário de Login -->
+                        <form id="loginForm" class="login-form" novalidate>
+                            <div class="form-group">
+                                <label for="username" class="bx--label">Nome de Usuário</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input 
+                                        type="text" 
+                                        id="username" 
+                                        name="username" 
+                                        class="bx--text-input" 
+                                        placeholder="Digite seu usuário"
+                                        required
+                                        autocomplete="username"
+                                    >
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password" class="bx--label">Senha</label>
+                                <div class="bx--text-input__field-wrapper">
+                                    <input 
+                                        type="password" 
+                                        id="password" 
+                                        name="password" 
+                                        class="bx--text-input" 
+                                        placeholder="Digite sua senha"
+                                        required
+                                        autocomplete="current-password"
+                                    >
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-top: 1.5rem;">
+                                <button 
+                                    type="submit" 
+                                    class="bx--btn bx--btn--primary bx--btn--block"
+                                    id="loginBtn"
+                                >
+                                    Acessar Sistema
+                                    <svg class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <path d="M9.3 3.7L13.1 7.5H1v1h12.1l-3.8 3.8.7.7 5-5-5-5-.7.7z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <!-- Informações de teste -->
+                        <div style="margin-top: 2rem; padding: 1rem; background: #f4f4f4; border-radius: 4px; font-size: 0.75rem;">
+                            <strong style="color: #525252;">Contas de Teste:</strong>
+                            <ul style="margin: 0.5rem 0 0 1rem; color: #6f6f6f; line-height: 1.6;">
+                                <li><code>richardSterling</code> / <code>arka2024</code></li>
+                                <li><code>victoriaAshford</code> / <code>preservar123</code></li>
+                                <li><code>marcusVolkov</code> / <code>novaHumanidade</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="arka-footer">
+        <div class="bx--grid">
+            <div class="bx--row">
+                <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
+                    <div class="footer-content">
+                        <div class="footer-brand">
+                            © 2024 Graphene Corp. | Programa ARKA
+                        </div>
+                        <div class="footer-slogan">
+                            "Nosso objetivo é cuidar e preservar."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Verifica se já está logado
+        if (ARKA_AUTH.redirectIfAuthenticated()) {
+            // Redirecionado, não faz nada
+        }
+        
+        // Setup do formulário de login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const errorNotification = document.getElementById('errorNotification');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            // Validação básica
+            if (!username || !password) {
+                showError('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Desabilita botão durante autenticação
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Autenticando...';
+            
+            // Simula delay de rede
+            setTimeout(() => {
+                const user = ARKA_AUTH.login(username, password);
+                
+                if (user) {
+                    // Login bem sucedido
+                    window.location.href = 'dashboard.html';
+                } else {
+                    // Login falhou
+                    showError('Credenciais inválidas. Verifique seu usuário e senha.');
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = `
+                        Acessar Sistema
+                        <svg class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M9.3 3.7L13.1 7.5H1v1h12.1l-3.8 3.8.7.7 5-5-5-5-.7.7z"/>
+                        </svg>
+                    `;
+                }
+            }, 800);
+        });
+        
+        function showError(message) {
+            const errorNotification = document.getElementById('errorNotification');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            errorMessage.textContent = message;
+            errorNotification.classList.remove('hidden');
+            
+            // Auto-hide após 5 segundos
+            setTimeout(() => {
+                errorNotification.classList.add('hidden');
+            }, 5000);
+        }
+        
+        // Setup sidebar responsiva
+        function setupMobileSidebar() {
+            const sidebar = document.getElementById('mainSidebar');
+            const toggle = document.getElementById('mobileMenuToggle');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            if (toggle && sidebar && overlay) {
+                toggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                    overlay.classList.toggle('show');
+                });
+                
+                overlay.addEventListener('click', () => {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('show');
+                });
+            }
+        }
+        
+        // Inicializa sidebar mobile
+        document.addEventListener('DOMContentLoaded', setupMobileSidebar);
+    </script>
+</body>
+</html>
