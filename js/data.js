@@ -1,13 +1,10 @@
 /**
  * Programa ARKA - Graphene Corp.
- * Base de dados local para notícias e contas de clientes
+ * Base de dados local para notícias e notificações da cápsula
+ * Nota: Dados dos usuários estão armazenados em arquivos individuais no diretório /auth/$USERNAME.js
  */
 
 const ARKA_DATA = {
-    // Não contém mais dados hardcoded de clientes
-    // Dados dos usuários agora estão em /auth/$USERNAME.js
-    clients: [],
-
     // Notícias do portal público
     news: [
         {
