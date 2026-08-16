@@ -16,6 +16,7 @@
     <!-- Sidebar Navigation -->
     <nav class="arka-sidebar" id="mainSidebar">
         <div class="arka-sidebar-header">
+            <img src="logo.svg" alt="Graphene Corp. Logo" class="arka-sidebar-logo">
             <span class="arka-sidebar-brand">GRAPHENE CORP.</span>
         </div>
         <ul class="arka-sidebar-nav">
@@ -28,31 +29,23 @@
                 </a>
             </li>
             <li class="arka-sidebar-item">
-                <a href="#sobre" class="arka-sidebar-link">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M16 2a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>
-                        <path d="M16 20c-4.4 0-8 3.6-8 8h2c0-3.3 2.7-6 6-6s6 2.7 6 6h2c0-4.4-3.6-8-8-8z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Sobre Nós</span>
-                </a>
-            </li>
-            <li class="arka-sidebar-item">
-                <a href="index.html" class="arka-sidebar-link">
+                <a href="news.html" class="arka-sidebar-link">
                     <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
                         <path d="M28 10H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2zm0 16H4V12h24v14zM20 6h-2V4h-4v2h-2c-1.1 0-2 .9-2 2v2h10V8c0-1.1-.9-2-2-2zm-2 4H14V8h4v2z"/>
                     </svg>
                     <span class="arka-sidebar-label">Notícias</span>
                 </a>
             </li>
-            <li class="arka-sidebar-item">
-                <a href="login.html" class="arka-sidebar-link active">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Área do Cliente</span>
-                </a>
-            </li>
         </ul>
+        <!-- Botão Voltar no rodapé da sidebar (Desktop) -->
+        <div class="arka-sidebar-footer">
+            <a href="index.html" class="arka-sidebar-link" style="justify-content: center; padding-top: 1rem; padding-bottom: 1rem;">
+                <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
+                    <path d="M6.7 12.3L2.9 8.5H15v-1H2.9l3.8-3.8-.7-.7-5 5 5 5 .7-.7z"/>
+                </svg>
+                <span class="arka-sidebar-label">Voltar</span>
+            </a>
+        </div>
     </nav>
 
     <!-- Mobile Menu Toggle -->
@@ -67,25 +60,18 @@
 
     <!-- Main Content Wrapper -->
     <div class="main-content-wrapper">
-        <!-- Header -->
+        <!-- Header (Mobile Only) -->
         <header class="arka-header">
-            <div class="bx--grid">
-                <div class="bx--row">
-                    <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                        <div class="arka-brand">
-                            <div>
-                                <div class="arka-logo">GRAPHENE <span>CORP.</span></div>
-                                <div class="arka-slogan">"A continuação para uma nova humanidade"</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bx--col-lg-8 bx--col-md-8 bx--col-sm-4" style="display: flex; align-items: center; justify-content: flex-end;">
-                        <a href="index.html" class="bx--btn bx--btn--tertiary" type="button">
-                            Voltar ao Portal
-                        </a>
-                    </div>
-                </div>
+            <div class="arka-brand">
+                <div class="arka-logo">GRAPHENE <span>CORP.</span></div>
             </div>
+            <nav class="arka-header-nav">
+                <a href="index.html" class="arka-header-nav-link">
+                    <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M6.7 12.3L2.9 8.5H15v-1H2.9l3.8-3.8-.7-.7-5 5 5 5 .7-.7z"/>
+                    </svg>
+                </a>
+            </nav>
         </header>
 
         <!-- Main Content -->
@@ -151,16 +137,6 @@
                                 </button>
                             </div>
                         </form>
-                        
-                        <!-- Informações de teste -->
-                        <div style="margin-top: 2rem; padding: 1rem; background: #f4f4f4; border-radius: 4px; font-size: 0.75rem;">
-                            <strong style="color: #525252;">Contas de Teste:</strong>
-                            <ul style="margin: 0.5rem 0 0 1rem; color: #6f6f6f; line-height: 1.6;">
-                                <li><code>richardSterling</code> / <code>arka2024</code></li>
-                                <li><code>victoriaAshford</code> / <code>preservar123</code></li>
-                                <li><code>marcusVolkov</code> / <code>novaHumanidade</code></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -196,7 +172,7 @@
         }
         
         // Setup do formulário de login
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const username = document.getElementById('username').value.trim();
@@ -214,9 +190,9 @@
             loginBtn.disabled = true;
             loginBtn.textContent = 'Autenticando...';
             
-            // Simula delay de rede
-            setTimeout(() => {
-                const user = ARKA_AUTH.login(username, password);
+            try {
+                // Login assíncrono carregando arquivo /auth/$USERNAME.js
+                const user = await ARKA_AUTH.login(username, password);
                 
                 if (user) {
                     // Login bem sucedido
@@ -232,7 +208,17 @@
                         </svg>
                     `;
                 }
-            }, 800);
+            } catch (error) {
+                console.error('Erro no login:', error);
+                showError('Erro ao conectar com o servidor. Tente novamente.');
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = `
+                    Acessar Sistema
+                    <svg class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M9.3 3.7L13.1 7.5H1v1h12.1l-3.8 3.8.7.7 5-5-5-5-.7.7z"/>
+                    </svg>
+                `;
+            }
         });
         
         function showError(message) {

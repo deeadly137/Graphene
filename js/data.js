@@ -1,76 +1,10 @@
 /**
  * Programa ARKA - Graphene Corp.
- * Base de dados local para notícias e contas de clientes
+ * Base de dados local para notícias e notificações da cápsula
+ * Nota: Dados dos usuários estão armazenados em arquivos individuais no diretório /auth/$USERNAME.js
  */
 
 const ARKA_DATA = {
-    // Contas de clientes (apenas clientes ricos, sem admin)
-    clients: [
-        {
-            id: "client001",
-            username: "richardSterling",
-            password: "arka2024",
-            name: "Richard Sterling",
-            email: "r.sterling@globalcorp.com",
-            biometric: {
-                bloodType: "AB+",
-                height: 182,
-                weight: 78,
-                age: 52,
-                gender: "Masculino"
-            },
-            capsuleState: "Em Espera",
-            attributes: {
-                strength: 1,
-                dexterity: 1,
-                constitution: 1,
-                intelligence: 1
-            }
-        },
-        {
-            id: "client002",
-            username: "victoriaAshford",
-            password: "preservar123",
-            name: "Victoria Ashford",
-            email: "v.ashford@ashfordindustries.com",
-            biometric: {
-                bloodType: "O-",
-                height: 168,
-                weight: 62,
-                age: 45,
-                gender: "Feminino"
-            },
-            capsuleState: "Hibernando",
-            attributes: {
-                strength: 1,
-                dexterity: 1,
-                constitution: 1,
-                intelligence: 1
-            }
-        },
-        {
-            id: "client003",
-            username: "marcusVolkov",
-            password: "novaHumanidade",
-            name: "Marcus Volkov",
-            email: "m.volkov@volkovdefense.com",
-            biometric: {
-                bloodType: "B+",
-                height: 190,
-                weight: 95,
-                age: 58,
-                gender: "Masculino"
-            },
-            capsuleState: "Desperto",
-            attributes: {
-                strength: 1,
-                dexterity: 1,
-                constitution: 1,
-                intelligence: 1
-            }
-        }
-    ],
-
     // Notícias do portal público
     news: [
         {

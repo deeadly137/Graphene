@@ -19,7 +19,7 @@ const ARKA_DASHBOARD = {
         this.renderCapsuleStatus(user);
         this.renderNotifications();
         this.initAttributeSystem(user);
-        this.setupLogout();
+        // setupLogout removido - logout agora é feito via link Voltar
         this.setupTabs();
     },
     
@@ -307,12 +307,11 @@ const ARKA_DASHBOARD = {
     },
 
     /**
-     * Configura botão de logout
+     * Configura botão de logout (removido - agora usa link Voltar)
      */
     setupLogout() {
-        document.getElementById('logoutBtn')?.addEventListener('click', () => {
-            ARKA_AUTH.logout();
-        });
+        // Logout agora é feito através do link "Voltar" na sidebar/header
+        // Esta função foi descontinuada
     }
 };
 

@@ -1,30 +1,74 @@
 /**
  * Programa ARKA - Graphene Corp.
  * Gerenciamento de autenticação e sessão de usuário
+ * Sistema de autenticação baseado em arquivos /auth/$USERNAME.js
  */
 
 const ARKA_AUTH = {
     STORAGE_KEY: 'arka_user_session',
+    currentUserData: null,
 
     /**
-     * Realiza login do cliente
+     * Realiza login do cliente carregando dados do arquivo /auth/$USERNAME.js
      * @param {string} username 
      * @param {string} password 
-     * @returns {object|null} Cliente autenticado ou null
+     * @returns {Promise<object|null>} Cliente autenticado ou null
      */
-    login(username, password) {
-        const client = ARKA_DATA.clients.find(
-            c => c.username === username && c.password === password
-        );
-
-        if (client) {
+    async login(username, password) {
+        try {
+            // Tenta carregar o arquivo do usuário via fetch
+            const response = await fetch(`./auth/${username}.js`);
+            
+            if (!response.ok) {
+                // Arquivo não encontrado (404)
+                return null;
+            }
+            
+            // Executa o script para obter ARKA_USER_DATA
+            const scriptText = await response.text();
+            
+            // Cria um contexto seguro para executar o script
+            const userData = this._parseUserData(scriptText);
+            
+            if (!userData) {
+                return null;
+            }
+            
+            // Valida a senha
+            if (userData.password !== password) {
+                return null;
+            }
+            
             // Remove senha dos dados armazenados
-            const { password: _, ...clientData } = client;
+            const { password: _, ...clientData } = userData;
             localStorage.setItem(this.STORAGE_KEY, JSON.stringify(clientData));
             return clientData;
+            
+        } catch (error) {
+            console.error('Erro na autenticação:', error);
+            return null;
         }
+    },
 
-        return null;
+    /**
+     * Parseia os dados do usuário do conteúdo do script
+     * @param {string} scriptText 
+     * @returns {object|null}
+     */
+    _parseUserData(scriptText) {
+        try {
+            // Extrai o objeto ARKA_USER_DATA do script
+            const match = scriptText.match(/const\s+ARKA_USER_DATA\s*=\s*({[\s\S]*?});?\s*$/);
+            if (match && match[1]) {
+                // Avalia o objeto JavaScript de forma segura
+                const dataObj = new Function('return ' + match[1])();
+                return dataObj;
+            }
+            return null;
+        } catch (error) {
+            console.error('Erro ao parsear dados do usuário:', error);
+            return null;
+        }
     },
 
     /**
