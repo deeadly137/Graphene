@@ -1,1 +1,10 @@
-Nothing should be ignored based on the provided file changes, as they consist only of source files (.css, .html, .js) without any build artifacts, dependencies, or temporary files.
+# Dependencies
+node_modules/
+
+# Editors
+.vscode/
+
+# Environment
+.env
+.env.local
+.env.*

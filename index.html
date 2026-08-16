@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="bx--body">
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation (Desktop Only) -->
     <nav class="arka-sidebar" id="mainSidebar">
         <div class="arka-sidebar-header">
+            <img src="logo.svg" alt="Graphene Corp. Logo" class="arka-sidebar-logo">
             <span class="arka-sidebar-brand">GRAPHENE CORP.</span>
         </div>
         <ul class="arka-sidebar-nav">
@@ -28,6 +29,14 @@
                 </a>
             </li>
             <li class="arka-sidebar-item">
+                <a href="news.html" class="arka-sidebar-link">
+                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M28 10H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2zm0 16H4V12h24v14zM20 6h-2V4h-4v2h-2c-1.1 0-2 .9-2 2v2h10V8c0-1.1-.9-2-2-2zm-2 4H14V8h4v2z"/>
+                    </svg>
+                    <span class="arka-sidebar-label">Notícias</span>
+                </a>
+            </li>
+            <li class="arka-sidebar-item">
                 <a href="#sobre" class="arka-sidebar-link">
                     <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
                         <path d="M16 2a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>
@@ -36,83 +45,41 @@
                     <span class="arka-sidebar-label">Sobre Nós</span>
                 </a>
             </li>
-            <li class="arka-sidebar-item">
-                <a href="index.html" class="arka-sidebar-link">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M28 10H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2zm0 16H4V12h24v14zM20 6h-2V4h-4v2h-2c-1.1 0-2 .9-2 2v2h10V8c0-1.1-.9-2-2-2zm-2 4H14V8h4v2z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Notícias</span>
-                </a>
-            </li>
-            <li class="arka-sidebar-item">
-                <a href="login.html" class="arka-sidebar-link">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Área do Cliente</span>
-                </a>
-            </li>
         </ul>
+        <!-- Login no rodapé da sidebar (Desktop) -->
+        <div class="arka-sidebar-footer">
+            <a href="#" id="sidebarLoginLink" class="arka-sidebar-link" style="justify-content: center;">
+                <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
+                    <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                </svg>
+                <span class="arka-sidebar-label">Login</span>
+            </a>
+        </div>
     </nav>
-
-    <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu">
-        <svg viewBox="0 0 32 32" fill="currentColor">
-            <path d="M4 6h24v2H4zM4 15h24v2H4zM4 24h24v2H4z"/>
-        </svg>
-    </button>
 
     <!-- Overlay para mobile -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="arka-sidebar-overlay" id="arkaSidebarOverlay"></div>
 
     <!-- Main Content Wrapper -->
     <div class="main-content-wrapper">
-        <!-- Header -->
+        <!-- Header (Mobile Only) -->
         <header class="arka-header">
-            <div class="bx--grid">
-                <div class="bx--row">
-                    <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                        <div class="arka-brand">
-                            <div>
-                                <div class="arka-logo">GRAPHENE <span>CORP.</span></div>
-                                <div class="arka-slogan">"A continuação para uma nova humanidade"</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bx--col-lg-8 bx--col-md-8 bx--col-sm-4" style="display: flex; align-items: center; justify-content: flex-end;">
-                        <a href="#" id="userIconLink" class="bx--btn bx--btn--ghost" type="button" aria-label="Acesso do Cliente">
-                            <svg class="bx--btn__icon" width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
-                                <path d="M16 15.503A5.503 5.503 0 1 0 16 4.497a5.503 5.503 0 0 0 0 11.006zm0-2a3.503 3.503 0 1 1 0-7.006 3.503 3.503 0 0 1 0 7.006zM5.5 30v-1.979c0-3.32 2.69-6.021 6.022-6.021h8.956C23.81 22 26.5 24.699 26.5 28.021V30H24.5v-1.979C24.5 25.805 22.816 24 20.478 24h-8.956C9.184 24 7.5 25.805 7.5 28.021V30H5.5z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+            <div class="arka-brand">
+                <div class="arka-logo">GRAPHENE <span>CORP.</span></div>
             </div>
+            <nav class="arka-header-nav">
+                <a href="index.html" class="arka-header-nav-link active">Início</a>
+                <a href="news.html" class="arka-header-nav-link">Notícias</a>
+                <a href="#" id="headerLoginLink" class="arka-header-nav-link">
+                    <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    </svg>
+                </a>
+            </nav>
         </header>
 
         <!-- Main Content -->
         <main class="bx--grid">
-            <!-- Banner Publicitário ARKA -->
-            <div class="bx--row">
-                <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                    <div class="arka-ad-banner">
-                        <h2 class="arka-ad-title">PROGRAMA ARKA</h2>
-                        <p class="arka-ad-subtitle">"Nosso objetivo é cuidar e preservar."</p>
-                        <p style="color: #c6c6c6; margin-bottom: 1.5rem; position: relative; z-index: 1;">
-                            Em um mundo de incertezas, as cápsulas de hibernação ARKA representam 
-                            a única alternativa viável de preservação da vida humana. Tecnologia de ponta 
-                            em graphene para garantir seu despertar em um novo mundo.
-                        </p>
-                        <div class="arka-ad-cta">
-                            <a href="login.html" class="bx--btn bx--btn--secondary" type="button">
-                                Saiba Mais
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Notícias -->
             <div class="bx--row">
                 <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
@@ -162,44 +129,30 @@
                 ARKA_NEWS.renderNewsGrid(newsGrid);
             }
             
-            // Setup sidebar mobile
-            setupMobileSidebar();
-            
-            // Setup header user icon
-            setupUserIcon();
+            // Setup login links (sidebar e header)
+            setupLoginLinks();
         });
         
-        // Setup header user icon based on auth state
-        function setupUserIcon() {
-            const userIcon = document.getElementById('userIconLink');
-            if (userIcon) {
-                userIcon.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (ARKA_AUTH.isAuthenticated()) {
-                        window.location.href = 'dashboard.html';
-                    } else {
-                        window.location.href = 'login.html';
-                    }
-                });
-            }
-        }
-        
-        // Setup sidebar responsiva
-        function setupMobileSidebar() {
-            const sidebar = document.getElementById('mainSidebar');
-            const toggle = document.getElementById('mobileMenuToggle');
-            const overlay = document.getElementById('sidebarOverlay');
+        // Setup login links based on auth state
+        function setupLoginLinks() {
+            const sidebarLoginLink = document.getElementById('sidebarLoginLink');
+            const headerLoginLink = document.getElementById('headerLoginLink');
             
-            if (toggle && sidebar && overlay) {
-                toggle.addEventListener('click', () => {
-                    sidebar.classList.toggle('open');
-                    overlay.classList.toggle('show');
-                });
-                
-                overlay.addEventListener('click', () => {
-                    sidebar.classList.remove('open');
-                    overlay.classList.remove('show');
-                });
+            const handleLoginClick = (e) => {
+                e.preventDefault();
+                if (ARKA_AUTH.isAuthenticated()) {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    window.location.href = 'login.html';
+                }
+            };
+            
+            if (sidebarLoginLink) {
+                sidebarLoginLink.addEventListener('click', handleLoginClick);
+            }
+            
+            if (headerLoginLink) {
+                headerLoginLink.addEventListener('click', handleLoginClick);
             }
         }
     </script>

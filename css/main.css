@@ -39,6 +39,87 @@
     z-index: 1000;
 }
 
+/* Desktop: esconder header */
+@media (min-width: 673px) {
+    .arka-header {
+        display: none;
+    }
+    
+    .main-content-wrapper {
+        margin-left: 64px;
+    }
+}
+
+/* Mobile: mostrar header com navegação em abas */
+@media (max-width: 672px) {
+    .arka-header {
+        height: 3rem;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .arka-brand {
+        display: flex;
+        align-items: center;
+        gap: var(--cds-spacing-05, 1rem);
+    }
+    
+    .arka-logo {
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 700;
+        font-size: 1.125rem;
+        color: white;
+        letter-spacing: 2px;
+    }
+    
+    .arka-logo span {
+        color: var(--arka-primary);
+    }
+    
+    .arka-slogan {
+        display: none;
+    }
+    
+    /* Header Navigation Tabs for Mobile */
+    .arka-header-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .arka-header-nav-link {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.875rem;
+        color: #c6c6c6;
+        text-decoration: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+    }
+    
+    .arka-header-nav-link:hover,
+    .arka-header-nav-link.active {
+        background: #262626;
+        color: white;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        position: static;
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+    
+    .sidebar-overlay.show {
+        display: block;
+    }
+}
+
 .arka-brand {
     display: flex;
     align-items: center;
@@ -132,60 +213,6 @@
     border-top: 1px solid #e0e0e0;
     font-size: 0.75rem;
     color: #6f6f6f;
-}
-
-/* ============================================
-   Publicidade ARKA
-   ============================================ */
-.arka-ad-banner {
-    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
-    border: 2px solid var(--arka-primary);
-    border-radius: 8px;
-    padding: var(--cds-spacing-07, 1.5rem);
-    margin: var(--cds-spacing-06, 1.25rem) 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.arka-ad-banner::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(15, 98, 254, 0.1) 0%, transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-}
-
-.arka-ad-title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: var(--cds-spacing-03, 0.5rem);
-    position: relative;
-    z-index: 1;
-}
-
-.arka-ad-subtitle {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 1rem;
-    color: #a8a8a8;
-    margin-bottom: var(--cds-spacing-05, 1rem);
-    position: relative;
-    z-index: 1;
-}
-
-.arka-ad-cta {
-    position: relative;
-    z-index: 1;
 }
 
 /* ============================================
@@ -530,7 +557,7 @@
 }
 
 /* ============================================
-   Sidebar Navigation
+   Sidebar Navigation - Desktop Only
    ============================================ */
 .arka-sidebar {
     position: fixed;
@@ -540,9 +567,11 @@
     width: 64px;
     background: #161616;
     border-right: 1px solid #393939;
-    z-index: 1000;
+    z-index: 9000;
     transition: width 0.3s ease;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .arka-sidebar:hover {
@@ -553,6 +582,15 @@
     padding: var(--cds-spacing-05, 1rem);
     border-bottom: 1px solid #393939;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.arka-sidebar-logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-right: var(--cds-spacing-03, 0.5rem);
 }
 
 .arka-sidebar-brand {
@@ -573,6 +611,7 @@
     list-style: none;
     padding: var(--cds-spacing-03, 0.5rem) 0;
     margin: 0;
+    flex: 1;
 }
 
 .arka-sidebar-item {
@@ -618,6 +657,13 @@
 .arka-sidebar:hover .arka-sidebar-label {
     opacity: 1;
     transition-delay: 0.1s;
+}
+
+/* Login item na parte inferior da sidebar */
+.arka-sidebar-footer {
+    margin-top: auto;
+    padding: var(--cds-spacing-07, 1.5rem) var(--cds-spacing-05, 1rem);
+    border-top: 1px solid #393939;
 }
 
 .main-content-wrapper {
@@ -734,6 +780,74 @@
 }
 
 /* ============================================
+   News List Page Styles
+   ============================================ */
+.news-list-container {
+    padding: var(--cds-spacing-05, 1rem) 0;
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cds-spacing-05, 1rem);
+}
+
+.news-list-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: var(--cds-spacing-05, 1rem);
+    transition: box-shadow 0.2s ease;
+}
+
+.news-list-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.news-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--cds-spacing-03, 0.5rem);
+}
+
+.news-list-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #161616;
+    margin-bottom: var(--cds-spacing-03, 0.5rem);
+}
+
+.news-list-summary {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.875rem;
+    color: #525252;
+    line-height: 1.5;
+    margin-bottom: var(--cds-spacing-04, 0.75rem);
+}
+
+.news-list-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--cds-spacing-04, 0.75rem);
+    border-top: 1px solid #e0e0e0;
+}
+
+.news-author {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.75rem;
+    color: #6f6f6f;
+}
+
+.no-news {
+    text-align: center;
+    color: #6f6f6f;
+    padding: var(--cds-spacing-07, 1.5rem);
+}
+
+/* ============================================
    Responsividade
    ============================================ */
 @media (max-width: 768px) {
@@ -790,10 +904,6 @@
     
     .news-full-title {
         font-size: 1.5rem;
-    }
-    
-    .arka-header .bx--grid {
-        padding-left: var(--cds-spacing-09, 2rem);
     }
 }
 
