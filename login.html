@@ -94,6 +94,16 @@
             <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
                 <div class="login-container">
                     <div class="login-card">
+                        <!-- Botão Voltar no topo -->
+                        <div style="margin-bottom: 1rem;">
+                            <a href="index.html" class="bx--btn bx--btn--tertiary" type="button" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor" style="margin-right: 0.5rem;">
+                                    <path d="M16 29A13 13 0 1 1 29 16a13 13 0 0 1-13 13zm0-24a11 11 0 1 0 11 11A11 11 0 0 0 16 5zm-1 17H9v-2h4V9H9V7h8v2h-4z"/>
+                                </svg>
+                                Voltar
+                            </a>
+                        </div>
+                        
                         <h1 class="login-title">Acesso à Cápsula ARKA</h1>
                         
                         <!-- Notificação de erro (oculta por padrão) -->
@@ -152,14 +162,12 @@
                             </div>
                         </form>
                         
-                        <!-- Informações de teste -->
+                        <!-- Informações de contexto -->
                         <div style="margin-top: 2rem; padding: 1rem; background: #f4f4f4; border-radius: 4px; font-size: 0.75rem;">
-                            <strong style="color: #525252;">Contas de Teste:</strong>
-                            <ul style="margin: 0.5rem 0 0 1rem; color: #6f6f6f; line-height: 1.6;">
-                                <li><code>richardSterling</code> / <code>arka2024</code></li>
-                                <li><code>victoriaAshford</code> / <code>preservar123</code></li>
-                                <li><code>marcusVolkov</code> / <code>novaHumanidade</code></li>
-                            </ul>
+                            <strong style="color: #525252;">Informações:</strong>
+                            <p style="margin: 0.5rem 0 0 0; color: #6f6f6f; line-height: 1.6;">
+                                Utilize suas credenciais de acesso à cápsula ARKA para entrar no sistema.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -187,7 +195,6 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
-    <script src="js/data.js"></script>
     <script src="js/auth.js"></script>
     <script>
         // Verifica se já está logado
@@ -196,33 +203,34 @@
         }
         
         // Setup do formulário de login
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
             const errorNotification = document.getElementById('errorNotification');
             const loginBtn = document.getElementById('loginBtn');
-            
+
             // Validação básica
             if (!username || !password) {
                 showError('Por favor, preencha todos os campos.');
                 return;
             }
-            
+
             // Desabilita botão durante autenticação
             loginBtn.disabled = true;
             loginBtn.textContent = 'Autenticando...';
-            
-            // Simula delay de rede
-            setTimeout(() => {
-                const user = ARKA_AUTH.login(username, password);
-                
+
+            try {
+                // Login assíncrono
+                const user = await ARKA_AUTH.login(username, password);
+
                 if (user) {
                     // Login bem sucedido
                     window.location.href = 'dashboard.html';
                 } else {
-                    // Login falhou
+                    // Login falhou - usuário não encontrado ou senha inválida
                     showError('Credenciais inválidas. Verifique seu usuário e senha.');
                     loginBtn.disabled = false;
                     loginBtn.innerHTML = `
@@ -232,9 +240,17 @@
                         </svg>
                     `;
                 }
-            }, 800);
+            } catch (error) {
+                showError('Erro ao conectar. Tente novamente.');
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = `
+                    Acessar Sistema
+                    <svg class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M9.3 3.7L13.1 7.5H1v1h12.1l-3.8 3.8.7.7 5-5-5-5-.7.7z"/>
+                    </svg>
+                `;
+            }
         });
-        
         function showError(message) {
             const errorNotification = document.getElementById('errorNotification');
             const errorMessage = document.getElementById('errorMessage');

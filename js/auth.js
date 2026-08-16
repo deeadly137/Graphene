@@ -1,30 +1,55 @@
 /**
  * Programa ARKA - Graphene Corp.
  * Gerenciamento de autenticação e sessão de usuário
+ * Sistema de armazenamento baseado em arquivos individuais /auth/$USERNAME.js
  */
 
 const ARKA_AUTH = {
     STORAGE_KEY: 'arka_user_session',
 
     /**
-     * Realiza login do cliente
+     * Realiza login do cliente carregando dados do arquivo individual
      * @param {string} username 
      * @param {string} password 
-     * @returns {object|null} Cliente autenticado ou null
+     * @returns {Promise<object|null>} Cliente autenticado ou null
      */
-    login(username, password) {
-        const client = ARKA_DATA.clients.find(
-            c => c.username === username && c.password === password
-        );
-
-        if (client) {
-            // Remove senha dos dados armazenados
-            const { password: _, ...clientData } = client;
-            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(clientData));
-            return clientData;
+    async login(username, password) {
+        try {
+            // Tenta carregar o arquivo do usuário
+            const response = await fetch(`./auth/${username}.js`);
+            
+            if (!response.ok) {
+                // Arquivo não encontrado (404)
+                return null;
+            }
+            
+            // Executa o script para obter os dados do usuário
+            const scriptText = await response.text();
+            
+            // Cria um sandbox para executar o script e extrair ARKA_USER_DATA
+            const sandbox = {};
+            const evalScript = new Function('sandbox', `
+                ${scriptText}
+                sandbox.userData = ARKA_USER_DATA;
+            `);
+            evalScript(sandbox);
+            
+            const client = sandbox.userData;
+            
+            // Valida a senha
+            if (client && client.passwordHash === password) {
+                // Remove senha dos dados armazenados
+                const { passwordHash: _, ...clientData } = client;
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(clientData));
+                return clientData;
+            }
+            
+            return null;
+        } catch (error) {
+            // Erro ao carregar arquivo (file:// protocol ou outro erro)
+            console.warn('Erro ao carregar dados do usuário:', error);
+            return null;
         }
-
-        return null;
     },
 
     /**
