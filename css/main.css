@@ -1,1024 +1,366 @@
-/**
- * Programa ARKA - Graphene Corp.
- * Estilos customizados integrados ao Carbon Design System
- */
-
-/* ============================================
-   Variáveis de Tema - Graphene Corp / ARKA
-   ============================================ */
 :root {
-    --arka-primary: #0f62fe;
-    --arka-primary-hover: #0353e9;
-    --arka-secondary: #393939;
-    --arka-accent: #be95ff;
-    --arka-success: #198038;
-    --arka-warning: #f1c21b;
-    --arka-error: #da1e28;
-    --arka-info: #0043ce;
-    
-    /* Cores da cápsula */
-    --capsule-bg: #161616;
-    --capsule-border: #393939;
-    --capsule-glow: #0f62fe;
-    
-    /* Status indicators */
-    --status-waiting: #f1c21b;
-    --status-hibernating: #0f62fe;
-    --status-active: #198038;
+  --bg-dark: #07240f;
+  --surface-dark: #121f18;
+  --surface-card: #1c2b23;
+  --surface-indigo: #3b3664;
+  --primary-blue: #405ffa;
+  --accent-cyan: #09bbc8;
+  --text-main: #d9fced;
+  --text-muted: #8eb3a2;
+  --border-color: rgba(9, 187, 200, 0.2);
+  --border-active: #09bbc8;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-glow: 0 0 20px rgba(64, 95, 250, 0.25);
+  --header-height: 72px;
 }
 
-/* ============================================
-   Header e Branding
-   ============================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Header & Navigation */
 .arka-header {
-    background: linear-gradient(135deg, #161616 0%, #262626 100%);
-    border-bottom: 2px solid var(--arka-primary);
-    padding: var(--cds-spacing-05, 1rem);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-/* Desktop: esconder header */
-@media (min-width: 673px) {
-    .arka-header {
-        display: none;
-    }
-    
-    .main-content-wrapper {
-        margin-left: 64px;
-    }
-}
-
-/* Mobile: mostrar header com navegação em abas */
-@media (max-width: 672px) {
-    .arka-header {
-        height: 3rem;
-        padding: 0 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    .arka-brand {
-        display: flex;
-        align-items: center;
-        gap: var(--cds-spacing-05, 1rem);
-    }
-    
-    .arka-logo {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 700;
-        font-size: 1.125rem;
-        color: white;
-        letter-spacing: 2px;
-    }
-    
-    .arka-logo span {
-        color: var(--arka-primary);
-    }
-    
-    .arka-slogan {
-        display: none;
-    }
-    
-    /* Header Navigation Tabs for Mobile */
-    .arka-header-nav {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .arka-header-nav-link {
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-size: 0.875rem;
-        color: #c6c6c6;
-        text-decoration: none;
-        padding: 0.5rem 0.75rem;
-        border-radius: 4px;
-        transition: all 0.2s ease;
-    }
-    
-    .arka-header-nav-link:hover,
-    .arka-header-nav-link.active {
-        background: #262626;
-        color: white;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-        position: static;
-        background: transparent;
-        border: none;
-        color: white;
-        padding: 0.5rem;
-        cursor: pointer;
-    }
-    
-    .sidebar-overlay.show {
-        display: block;
-    }
-}
-
-.arka-brand {
-    display: flex;
-    align-items: center;
-    gap: var(--cds-spacing-05, 1rem);
-}
-
-.arka-logo {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: white;
-    letter-spacing: 2px;
+  height: var(--header-height);
+  background: rgba(18, 31, 24, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
 }
 
-.arka-logo span {
-    color: var(--arka-primary);
+.brand-logo img {
+  height: 32px;
+  width: auto;
 }
 
-.arka-slogan {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-style: italic;
-    color: #a8a8a8;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
 }
 
-/* ============================================
-   Portal de Notícias
-   ============================================ */
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--cds-spacing-05, 1rem);
-    padding: var(--cds-spacing-05, 1rem);
+.nav-link {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
 }
 
-.news-card {
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    overflow: hidden;
-    transition: box-shadow 0.2s ease;
+.nav-link:hover, .nav-link.active {
+  color: var(--text-main);
+  background: rgba(9, 187, 200, 0.1);
 }
 
-.news-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
-.news-card.featured {
-    grid-column: span 2;
-    border-left: 4px solid var(--arka-primary);
+.btn-login-nav {
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
 }
 
-.news-card-header {
-    padding: var(--cds-spacing-04, 0.75rem);
-    background: #f4f4f4;
-    border-bottom: 1px solid #e0e0e0;
+.btn-login-nav:hover {
+  opacity: 0.9;
 }
 
-.news-category {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--arka-primary);
-    font-weight: 600;
+/* Layout Padding Fix for Index and Other Pages */
+main.main-content {
+  margin-top: calc(var(--header-height) + 2rem);
+  flex: 1;
+  padding: 0 2rem 4rem 2rem;
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.news-card-body {
-    padding: var(--cds-spacing-05, 1rem);
+/* Cards & Grid Architecture */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
-.news-title {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1.125rem;
-    margin-bottom: var(--cds-spacing-03, 0.5rem);
-    color: #161616;
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-.news-summary {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    color: #525252;
-    line-height: 1.5;
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.news-meta {
-    padding: var(--cds-spacing-04, 0.75rem);
-    background: #f4f4f4;
-    border-top: 1px solid #e0e0e0;
-    font-size: 0.75rem;
-    color: #6f6f6f;
+.card:hover {
+  border-color: var(--border-active);
 }
 
-/* ============================================
-   Login Page
-   ============================================ */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 200px);
-    padding: var(--cds-spacing-07, 1.5rem);
+.card-indigo {
+  background: var(--surface-indigo);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.login-card {
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: var(--cds-spacing-09, 2rem);
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem 4rem 1rem;
 }
 
-.login-title {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    margin-bottom: var(--cds-spacing-06, 1.25rem);
-    color: #161616;
-    text-align: center;
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--text-main), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.login-form .form-group {
-    margin-bottom: var(--cds-spacing-05, 1rem);
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
 }
 
-.login-form label {
-    display: block;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: var(--cds-spacing-02, 0.375rem);
-    color: #525252;
+/* Section Titles */
+.section-header {
+  margin: 3rem 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* ============================================
-   Dashboard - Cápsula
-   ============================================ */
-.dashboard-container {
-    padding: var(--cds-spacing-05, 1rem);
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--cds-spacing-05, 1rem);
+/* Dashboard Tabs & Specs */
+.tabs-container {
+  margin-bottom: 2rem;
 }
 
-.dashboard-card {
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: var(--cds-spacing-06, 1.25rem);
+.tabs-header {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
 }
 
-.dashboard-card-title {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #161616;
-    margin-bottom: var(--cds-spacing-04, 0.75rem);
-    display: flex;
-    align-items: center;
-    gap: var(--cds-spacing-03, 0.5rem);
+.tab-btn {
+  color: var(--text-muted);
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Ficha Biométrica */
-.biometric-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--cds-spacing-04, 0.75rem);
+.tab-btn.active {
+  color: var(--text-main);
+  background: var(--primary-blue);
 }
 
-.biometric-item {
-    background: #f4f4f4;
-    padding: var(--cds-spacing-04, 0.75rem);
-    border-radius: 4px;
+.tab-content {
+  display: none;
+  padding-top: 1.5rem;
 }
 
-.biometric-label {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.75rem;
-    color: #6f6f6f;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.tab-content.active {
+  display: block;
 }
 
-.biometric-value {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #161616;
+.capsule-hero-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  background: var(--surface-indigo);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--accent-cyan);
+  margin-bottom: 2rem;
 }
 
-/* Status da Cápsula */
-.capsule-status {
-    display: flex;
-    align-items: center;
-    gap: var(--cds-spacing-04, 0.75rem);
-    padding: var(--cds-spacing-05, 1rem);
-    background: #f4f4f4;
-    border-radius: 4px;
-    margin-bottom: var(--cds-spacing-05, 1rem);
-}
-
-.status-indicator {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #8d8d8d;
-}
-
-.status-indicator.status-waiting {
-    background: var(--status-waiting);
-    box-shadow: 0 0 8px var(--status-waiting);
-}
-
-.status-indicator.status-hibernating {
-    background: var(--status-hibernating);
-    box-shadow: 0 0 8px var(--status-hibernating);
-}
-
-.status-indicator.status-active {
-    background: var(--status-active);
-    box-shadow: 0 0 8px var(--status-active);
-}
-
-.capsule-state-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #161616;
-}
-
-/* Notificações */
-.notifications-list {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.notification-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--cds-spacing-03, 0.5rem);
-    padding: var(--cds-spacing-04, 0.75rem);
-    border-radius: 4px;
-    margin-bottom: var(--cds-spacing-03, 0.5rem);
-}
-
-.notification-info {
-    background: #edf5ff;
-    border-left: 3px solid var(--arka-info);
-}
-
-.notification-warning {
-    background: #fcf7cf;
-    border-left: 3px solid var(--arka-warning);
-}
-
-.notification-success {
-    background: #defbe6;
-    border-left: 3px solid var(--arka-success);
-}
-
-.notification-error {
-    background: #fff1f1;
-    border-left: 3px solid var(--arka-error);
-}
-
-.notification-icon {
-    font-size: 1.25rem;
-    flex-shrink: 0;
-}
-
-.notification-content {
-    flex: 1;
-}
-
-.notification-message {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    color: #161616;
-    margin: 0 0 var(--cds-spacing-01, 0.125rem) 0;
-}
-
-.notification-time {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    color: #6f6f6f;
-}
-
-/* Sistema de Atributos RPG */
-.attributes-system {
-    background: #161616;
-    color: white;
-}
-
-.attributes-system .dashboard-card-title {
-    color: white;
-}
-
-.attribute-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--cds-spacing-03, 0.5rem) 0;
-    border-bottom: 1px solid #393939;
-}
-
-.attribute-row:last-child {
-    border-bottom: none;
-}
-
-.attribute-name {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    color: #c6c6c6;
-    min-width: 100px;
-}
-
-.attribute-controls {
-    display: flex;
-    align-items: center;
-    gap: var(--cds-spacing-03, 0.5rem);
-}
-
-.attribute-btn {
-    width: 28px;
-    height: 28px;
-    border: 1px solid #6f6f6f;
-    background: #262626;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.attribute-btn:hover:not(:disabled) {
-    background: var(--arka-primary);
-    border-color: var(--arka-primary);
-}
-
-.attribute-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.attribute-value {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--arka-primary);
-    min-width: 32px;
-    text-align: center;
-}
-
-.points-summary {
-    margin-top: var(--cds-spacing-05, 1rem);
-    padding: var(--cds-spacing-04, 0.75rem);
-    background: #262626;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.points-label {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    color: #a8a8a8;
-}
-
-.points-value {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--arka-warning);
-}
-
-/* ============================================
-   Footer
-   ============================================ */
-.arka-footer {
-    background: #161616;
-    color: #a8a8a8;
-    padding: var(--cds-spacing-07, 1.5rem);
-    margin-top: var(--cds-spacing-09, 2rem);
-    border-top: 2px solid var(--arka-primary);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--cds-spacing-05, 1rem);
-}
-
-.footer-brand {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.875rem;
-}
-
-.footer-slogan {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-style: italic;
-    font-size: 0.75rem;
-}
-
-/* ============================================
-   Utilitários
-   ============================================ */
-.text-center {
-    text-align: center;
-}
-
-.mt-4 {
-    margin-top: var(--cds-spacing-04, 0.75rem);
-}
-
-.mb-4 {
-    margin-bottom: var(--cds-spacing-04, 0.75rem);
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* ============================================
-   Sidebar Navigation - Desktop Only
-   ============================================ */
-.arka-sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 64px;
-    background: #161616;
-    border-right: 1px solid #393939;
-    z-index: 9000;
-    transition: width 0.3s ease;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.arka-sidebar:hover {
-    width: 240px;
-}
-
-.arka-sidebar-header {
-    padding: var(--cds-spacing-05, 1rem);
-    border-bottom: 1px solid #393939;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-}
-
-.arka-sidebar-logo {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-    margin-right: var(--cds-spacing-03, 0.5rem);
-}
-
-.arka-sidebar-brand {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    font-size: 0.875rem;
-    color: white;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.arka-sidebar:hover .arka-sidebar-brand {
-    opacity: 1;
-    transition-delay: 0.1s;
-}
-
-.arka-sidebar-nav {
-    list-style: none;
-    padding: var(--cds-spacing-03, 0.5rem) 0;
-    margin: 0;
-    flex: 1;
-}
-
-.arka-sidebar-item {
-    margin: var(--cds-spacing-02, 0.375rem) var(--cds-spacing-03, 0.5rem);
-}
-
-.arka-sidebar-link {
-    display: flex;
-    align-items: center;
-    gap: var(--cds-spacing-04, 0.75rem);
-    padding: var(--cds-spacing-03, 0.5rem);
-    color: #c6c6c6;
-    text-decoration: none;
-    border-radius: 4px;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-}
-
-.arka-sidebar-link:hover {
-    background: #262626;
-    color: white;
-}
-
-.arka-sidebar-link.active {
-    background: var(--arka-primary);
-    color: white;
-}
-
-.arka-sidebar-icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    fill: currentColor;
-}
-
-.arka-sidebar-label {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.arka-sidebar:hover .arka-sidebar-label {
-    opacity: 1;
-    transition-delay: 0.1s;
-}
-
-/* Login item na parte inferior da sidebar */
-.arka-sidebar-footer {
-    margin-top: auto;
-    padding: var(--cds-spacing-07, 1.5rem) var(--cds-spacing-05, 1rem);
-    border-top: 1px solid #393939;
-}
-
-.main-content-wrapper {
-    margin-left: 64px;
-    transition: margin-left 0.3s ease;
-}
-
-/* Menu Mobile Toggle */
-.mobile-menu-toggle {
+.capsule-image-holder {
+  background: rgba(7, 36, 15, 0.6);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px dashed var(--border-color);
+}
+
+.capsule-image-holder svg {
+  width: 120px;
+  height: 120px;
+  fill: var(--accent-cyan);
+}
+
+.spec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(9, 187, 200, 0.15);
+  color: var(--accent-cyan);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.spec-box {
+  background: rgba(7, 36, 15, 0.4);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.spec-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.spec-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 0.25rem;
+}
+
+/* User Profile Section */
+.user-profile-card {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+}
+
+.btn-logout {
+  background: rgba(220, 53, 69, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(220, 53, 69, 0.4);
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  transition: background 0.2s ease;
+}
+
+.btn-logout:hover {
+  background: rgba(220, 53, 69, 0.4);
+}
+
+/* Footer */
+footer {
+  background: var(--surface-dark);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .capsule-hero-card {
+    grid-template-columns: 1fr;
+  }
+  .spec-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .arka-header {
+    padding: 0 1rem;
+  }
+  .nav-menu {
+    gap: 0.5rem;
+  }
+  .nav-link span {
     display: none;
-    position: fixed;
-    top: var(--cds-spacing-05, 1rem);
-    left: var(--cds-spacing-05, 1rem);
-    z-index: 1100;
-    background: #161616;
-    border: 1px solid #393939;
-    color: white;
-    padding: var(--cds-spacing-03, 0.5rem);
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.mobile-menu-toggle svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-/* Overlay para mobile */
-.sidebar-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-/* ============================================
-   Página de Notícia Completa
-   ============================================ */
-.news-full-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--cds-spacing-06, 1.25rem) 0;
-}
-
-.news-full-header {
-    margin-bottom: var(--cds-spacing-06, 1.25rem);
-    padding-bottom: var(--cds-spacing-05, 1rem);
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.news-full-category {
-    display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--arka-primary);
-    font-weight: 600;
-    margin-bottom: var(--cds-spacing-03, 0.5rem);
-}
-
-.news-full-title {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1.75rem;
-    color: #161616;
-    margin-bottom: var(--cds-spacing-04, 0.75rem);
-    line-height: 1.3;
-}
-
-.news-full-meta {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    color: #6f6f6f;
-}
-
-.news-full-content {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #525252;
-}
-
-.news-full-content p {
-    margin-bottom: var(--cds-spacing-05, 1rem);
-}
-
-.news-details-box {
-    margin-top: var(--cds-spacing-07, 1.5rem);
-    padding: var(--cds-spacing-05, 1rem);
-    background: #f4f4f4;
-    border-radius: 4px;
-    border-left: 3px solid var(--arka-primary);
-}
-
-.news-detail-item {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    color: #525252;
-    margin-bottom: var(--cds-spacing-02, 0.375rem);
-}
-
-.news-detail-item:last-child {
-    margin-bottom: 0;
-}
-
-.back-to-news-btn {
-    margin-bottom: var(--cds-spacing-05, 1rem);
-}
-
-/* ============================================
-   News List Page Styles
-   ============================================ */
-.news-list-container {
-    padding: var(--cds-spacing-05, 1rem) 0;
-}
-
-.news-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--cds-spacing-05, 1rem);
-}
-
-.news-list-item {
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    padding: var(--cds-spacing-05, 1rem);
-    transition: box-shadow 0.2s ease;
-}
-
-.news-list-item:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.news-list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--cds-spacing-03, 0.5rem);
-}
-
-.news-list-title {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    color: #161616;
-    margin-bottom: var(--cds-spacing-03, 0.5rem);
-}
-
-.news-list-summary {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
-    color: #525252;
-    line-height: 1.5;
-    margin-bottom: var(--cds-spacing-04, 0.75rem);
-}
-
-.news-list-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: var(--cds-spacing-04, 0.75rem);
-    border-top: 1px solid #e0e0e0;
-}
-
-.news-author {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.75rem;
-    color: #6f6f6f;
-}
-
-.no-news {
-    text-align: center;
-    color: #6f6f6f;
-    padding: var(--cds-spacing-07, 1.5rem);
-}
-
-/* ============================================
-   Responsividade
-   ============================================ */
-@media (max-width: 768px) {
-    .news-card.featured {
-        grid-column: span 1;
-    }
-    
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .biometric-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    /* Sidebar responsiva */
-    .arka-sidebar {
-        transform: translateX(-100%);
-        width: 240px;
-    }
-    
-    .arka-sidebar.open {
-        transform: translateX(0);
-    }
-    
-    .arka-sidebar:hover {
-        width: 240px;
-    }
-    
-    .main-content-wrapper {
-        margin-left: 0;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .sidebar-overlay.show {
-        display: block;
-    }
-    
-    .arka-sidebar-brand {
-        opacity: 1;
-    }
-    
-    .arka-sidebar-label {
-        opacity: 1;
-    }
-    
-    .news-full-title {
-        font-size: 1.5rem;
-    }
-}
-
-/* ============================================
-   Mobile-First Responsiveness (max-width: 672px)
-   ============================================ */
-@media (max-width: 672px) {
-    /* Header Compacto Mobile */
-    .arka-header {
-        height: 3rem;
-        padding: 0 1rem;
-    }
-    
-    .arka-slogan {
-        display: none; /* Oculta slogan em telas pequenas */
-    }
-    
-    .arka-logo {
-        font-size: 1.125rem;
-    }
-    
-    /* Sidebar Mobile (Drawer Overlay) */
-    .arka-sidebar {
-        transform: translateX(-100%);
-        width: 240px;
-        z-index: 9000;
-    }
-    
-    .arka-sidebar.open {
-        transform: translateX(0);
-    }
-    
-    .arka-sidebar:hover {
-        width: 240px; /* Mantém largura exposta no mobile quando open */
-    }
-    
-    .arka-sidebar-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 8999;
-    }
-    
-    .arka-sidebar-overlay.show {
-        display: block;
-    }
-    
-    .main-content-wrapper {
-        margin-left: 0;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    /* Navegação das Abas em Telas Pequenas */
-    .bx--tabs__nav {
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    
-    .bx--tabs__nav::-webkit-scrollbar {
-        display: none;
-    }
-    
-    /* Touch Targets para botões de atributos */
-    .attribute-btn {
-        min-width: 44px;
-        min-height: 44px;
-        width: 44px;
-        height: 44px;
-    }
-    
-    /* Prevenção de Scroll Horizontal */
-    html, body {
-        overflow-x: hidden;
-        max-width: 100vw;
-    }
-}
-
-/* ============================================
-   Sidebar Desktop - Hover Expand
-   ============================================ */
-@media (min-width: 673px) {
-    .arka-sidebar {
-        position: fixed;
-        z-index: 9000;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 64px;
-        overflow: hidden;
-        transition: width 0.3s ease;
-    }
-    
-    .arka-sidebar:hover {
-        width: 240px;
-    }
-    
-    .main-content-wrapper {
-        margin-left: 64px;
-        transition: margin-left 0.3s ease;
-    }
-    
-    .mobile-menu-toggle {
-        display: none;
-    }
-    
-    .arka-sidebar-overlay {
-        display: none;
-    }
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
 }

@@ -1,353 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard da Cápsula | Programa ARKA - Graphene Corp.</title>
-    
-    <!-- IBM Carbon Design System CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Estilos customizados -->
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cápsula Pessoal - Graphene</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="bx--body">
-    <!-- Sidebar Navigation -->
-    <nav class="arka-sidebar" id="mainSidebar">
-        <div class="arka-sidebar-header">
-            <img src="logo.svg" alt="Graphene Corp. Logo" class="arka-sidebar-logo">
-            <span class="arka-sidebar-brand">GRAPHENE CORP.</span>
-        </div>
-        <ul class="arka-sidebar-nav">
-            <li class="arka-sidebar-item">
-                <a href="index.html" class="arka-sidebar-link">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M16 2L2 14v14h10V18h8v10h10V14L16 2zm0 3.5l10 8.5v12H20v-10h-8v10H6V14l10-8.5z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Início</span>
-                </a>
-            </li>
-            <li class="arka-sidebar-item">
-                <a href="news.html" class="arka-sidebar-link">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M28 10H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2zm0 16H4V12h24v14zM20 6h-2V4h-4v2h-2c-1.1 0-2 .9-2 2v2h10V8c0-1.1-.9-2-2-2zm-2 4H14V8h4v2z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Notícias</span>
-                </a>
-            </li>
-            <li class="arka-sidebar-item">
-                <a href="dashboard.html" class="arka-sidebar-link active">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Minha Cápsula</span>
-                </a>
-            </li>
-        </ul>
-        <!-- Botão Voltar no rodapé da sidebar (Desktop) -->
-        <div class="arka-sidebar-footer">
-            <a href="index.html" class="arka-sidebar-link" style="justify-content: center; padding-top: 1rem; padding-bottom: 1rem;">
-                <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                    <path d="M6.7 12.3L2.9 8.5H15v-1H2.9l3.8-3.8-.7-.7-5 5 5 5 .7-.7z"/>
-                </svg>
-                <span class="arka-sidebar-label">Voltar</span>
-            </a>
-        </div>
+<body>
+
+  <!-- Header unificado (Overlay antigo e sidebar removidos totalmente) -->
+  <header class="arka-header">
+    <a href="index.html" class="brand-logo">
+      <img src="logo.svg" alt="Graphene Logo">
+      <span>GRAPHENE</span>
+    </a>
+    <nav>
+      <ul class="nav-menu">
+        <li>
+          <a href="index.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Início</span>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <span>Sobre Nós</span>
+          </a>
+        </li>
+        <li>
+          <a href="news.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            <span>Notícias</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboard.html" class="nav-link active">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+            <span>Minha Cápsula</span>
+          </a>
+        </li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu">
-        <svg viewBox="0 0 32 32" fill="currentColor">
-            <path d="M4 6h24v2H4zM4 15h24v2H4zM4 24h24v2H4z"/>
-        </svg>
-    </button>
+  <main class="main-content">
+    
+    <!-- Navegação por abas customizada sem conflito de JS -->
+    <div class="tabs-container">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="capsule">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Status da Cápsula
+        </button>
+        <button class="tab-btn" data-tab="telemetry">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 15.66z"/></svg>
+          Telemetria & Propriedades
+        </button>
+        <button class="tab-btn" data-tab="user">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          Ficha do Usuário
+        </button>
+      </div>
 
-    <!-- Overlay para mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <div class="arka-sidebar-overlay" id="arkaSidebarOverlay"></div>
+      <!-- Aba 1: Dados da Cápsula (Destaque Principal) -->
+      <div id="tab-capsule" class="tab-content active">
+        <div class="capsule-hero-card">
+          <div class="capsule-image-holder">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <span class="spec-badge">UNIDADE OPERACIONAL ATIVA</span>
+            <h2 id="capsuleModelTitle" style="font-size: 2rem; margin-bottom: 0.5rem;">Cápsula Arcturus MK-IV</h2>
+            <p style="color: var(--text-muted);">Módulo autônomo com suporte de vida avançado, blindagem sintética de grafeno e barreira eletromagnética.</p>
 
-    <!-- Main Content Wrapper -->
-    <div class="main-content-wrapper">
-        <!-- Header (Mobile Only) -->
-        <header class="arka-header">
-            <div class="arka-brand">
-                <div class="arka-logo">GRAPHENE <span>CORP.</span></div>
+            <div class="spec-grid">
+              <div class="spec-box">
+                <span class="spec-label">Tempo de Autonomia</span>
+                <span class="spec-value" id="specRuntime">720 Horas</span>
+              </div>
+              <div class="spec-box">
+                <span class="spec-label">Integridade do Grafeno</span>
+                <span class="spec-value" style="color: var(--accent-cyan);">99.8%</span>
+              </div>
+              <div class="spec-box">
+                <span class="spec-label">Pressão Interna</span>
+                <span class="spec-value">1.01 atm</span>
+              </div>
             </div>
-            <nav class="arka-header-nav">
-                <a href="index.html" class="arka-header-nav-link">
-                    <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M6.7 12.3L2.9 8.5H15v-1H2.9l3.8-3.8-.7-.7-5 5 5 5 .7-.7z"/>
-                    </svg>
-                </a>
-            </nav>
-        </header>
-
-        <!-- Main Content -->
-        <main class="bx--grid dashboard-container">
-        <!-- Título da Página -->
-        <div class="bx--row">
-            <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                <h1 class="bx--type-expressive-heading-04" style="margin-bottom: 0.5rem;">
-                    Painel de Controle da Cápsula
-                </h1>
-                <p class="bx--type-body-long-01" style="color: #6f6f6f;">
-                    Bem-vindo ao sistema ARKA. Gerencie sua hibernação e atributos pessoais.
-                </p>
-            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Carbon Tabs System -->
-        <div class="bx--row" style="margin-top: 1.5rem;">
-            <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                <div class="bx--tabs" data-tabs>
-                    <ul class="bx--tabs__nav" role="tablist">
-                        <li class="bx--tabs__nav-item bx--tabs__nav-item--selected">
-                            <a class="bx--tabs__nav-link" href="#panel-biometric" role="tab" aria-selected="true">
-                                Ficha Biométrica
-                            </a>
-                        </li>
-                        <li class="bx--tabs__nav-item">
-                            <a class="bx--tabs__nav-link" href="#panel-monitoring" role="tab">
-                                Monitoramento da Cápsula
-                            </a>
-                        </li>
-                        <li class="bx--tabs__nav-item">
-                            <a class="bx--tabs__nav-link" href="#panel-attributes" role="tab">
-                                Atributos RPG
-                            </a>
-                        </li>
-                        <li class="bx--tabs__nav-item">
-                            <a class="bx--tabs__nav-link" href="#panel-context" role="tab">
-                                Contexto de Sobrevivência
-                            </a>
-                        </li>
-                    </ul>
-                    
-                    <!-- Tab Panel 1: Ficha Biométrica -->
-                    <div id="panel-biometric" class="bx--tab-content" role="tabpanel" aria-labelledby="tab-biometric">
-                        <div class="dashboard-card" style="margin-top: 1rem;">
-                            <h2 class="dashboard-card-title">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                                </svg>
-                                Ficha Biométrica
-                            </h2>
-                            
-                            <div style="margin-bottom: 1rem;">
-                                <div id="clientName" style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 1.125rem; color: #161616;">
-                                    Carregando...
-                                </div>
-                                <div id="clientEmail" style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; color: #6f6f6f;">
-                                    --
-                                </div>
-                            </div>
-                            
-                            <div class="biometric-grid">
-                                <div class="biometric-item">
-                                    <div class="biometric-label">Tipo Sanguíneo</div>
-                                    <div class="biometric-value" id="bloodType">--</div>
-                                </div>
-                                <div class="biometric-item">
-                                    <div class="biometric-label">Altura</div>
-                                    <div class="biometric-value" id="height">--</div>
-                                </div>
-                                <div class="biometric-item">
-                                    <div class="biometric-label">Peso</div>
-                                    <div class="biometric-value" id="weight">--</div>
-                                </div>
-                                <div class="biometric-item">
-                                    <div class="biometric-label">Idade</div>
-                                    <div class="biometric-value" id="age">--</div>
-                                </div>
-                                <div class="biometric-item" style="grid-column: span 2;">
-                                    <div class="biometric-label">Gênero</div>
-                                    <div class="biometric-value" id="gender">--</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Tab Panel 2: Monitoramento da Cápsula -->
-                    <div id="panel-monitoring" class="bx--tab-content" role="tabpanel" aria-labelledby="tab-monitoring" hidden>
-                        <div class="dashboard-card" style="margin-top: 1rem;">
-                            <h2 class="dashboard-card-title">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2H9v-2zm0-8h2v6H9V5z"/>
-                                </svg>
-                                Monitoramento da Cápsula
-                            </h2>
-                            
-                            <div class="capsule-status">
-                                <div id="statusIndicator" class="status-indicator"></div>
-                                <div>
-                                    <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.75rem; color: #6f6f6f; text-transform: uppercase;">
-                                        Estado Atual
-                                    </div>
-                                    <div id="capsuleState" class="capsule-state-label">Carregando...</div>
-                                </div>
-                            </div>
-                            
-                            <div style="padding: 1rem; background: #edf5ff; border-radius: 4px; border-left: 3px solid #0043ce;">
-                                <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; color: #161616; margin: 0;">
-                                    <strong>Sistema Operacional:</strong> Todos os sistemas funcionando dentro dos parâmetros normais.
-                                </p>
-                            </div>
-                            
-                            <h3 style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; margin-top: 1.5rem; margin-bottom: 0.75rem;">Notificações do Sistema</h3>
-                            <div id="notificationsList" class="notifications-list">
-                                <!-- Notificações serão renderizadas via JS -->
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Tab Panel 3: Atributos RPG -->
-                    <div id="panel-attributes" class="bx--tab-content" role="tabpanel" aria-labelledby="tab-attributes" hidden>
-                        <div class="dashboard-card attributes-system" style="margin-top: 1rem;">
-                            <h2 class="dashboard-card-title">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M10 2l2.5 5 5.5.5-4 4 1 5.5-5-2.5-5 2.5 1-5.5-4-4 5.5-.5L10 2z"/>
-                                </svg>
-                                Sistema de Atributos Pessoais
-                            </h2>
-                            
-                            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.75rem; color: #a8a8a8; margin-bottom: 1rem;">
-                                Distribua seus pontos de atributo. Total disponível: <strong id="totalPointsDisplay">20</strong>
-                            </p>
-                            
-                            <div class="attribute-row">
-                                <span class="attribute-name">Força</span>
-                                <div class="attribute-controls">
-                                    <button id="btnRemoveStrength" class="attribute-btn" type="button" aria-label="Remover ponto de Força">−</button>
-                                    <span id="attrStrength" class="attribute-value">5</span>
-                                    <button id="btnAddStrength" class="attribute-btn" type="button" aria-label="Adicionar ponto de Força">+</button>
-                                </div>
-                            </div>
-                            
-                            <div class="attribute-row">
-                                <span class="attribute-name">Destreza</span>
-                                <div class="attribute-controls">
-                                    <button id="btnRemoveDexterity" class="attribute-btn" type="button" aria-label="Remover ponto de Destreza">−</button>
-                                    <span id="attrDexterity" class="attribute-value">5</span>
-                                    <button id="btnAddDexterity" class="attribute-btn" type="button" aria-label="Adicionar ponto de Destreza">+</button>
-                                </div>
-                            </div>
-                            
-                            <div class="attribute-row">
-                                <span class="attribute-name">Constituição</span>
-                                <div class="attribute-controls">
-                                    <button id="btnRemoveConstitution" class="attribute-btn" type="button" aria-label="Remover ponto de Constituição">−</button>
-                                    <span id="attrConstitution" class="attribute-value">5</span>
-                                    <button id="btnAddConstitution" class="attribute-btn" type="button" aria-label="Adicionar ponto de Constituição">+</button>
-                                </div>
-                            </div>
-                            
-                            <div class="attribute-row">
-                                <span class="attribute-name">Inteligência</span>
-                                <div class="attribute-controls">
-                                    <button id="btnRemoveIntelligence" class="attribute-btn" type="button" aria-label="Remover ponto de Inteligência">−</button>
-                                    <span id="attrIntelligence" class="attribute-value">5</span>
-                                    <button id="btnAddIntelligence" class="attribute-btn" type="button" aria-label="Adicionar ponto de Inteligência">+</button>
-                                </div>
-                            </div>
-                            
-                            <div class="points-summary">
-                                <span class="points-label">Pontos Utilizados:</span>
-                                <span class="points-value"><span id="pointsUsed">0</span> / 20</span>
-                            </div>
-                            <div class="points-summary" style="margin-top: 0.5rem;">
-                                <span class="points-label">Pontos Disponíveis:</span>
-                                <span class="points-value" id="pointsAvailable">20</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Tab Panel 4: Contexto de Sobrevivência -->
-                    <div id="panel-context" class="bx--tab-content" role="tabpanel" aria-labelledby="tab-context" hidden>
-                        <div class="dashboard-card" style="margin-top: 1rem;">
-                            <h2 class="dashboard-card-title">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M16 12V4H6v8l-4 4v2h20v-2l-6-6zM8 6h6v5.5L11 13V6H8v6l-3-1.5V6z"/>
-                                </svg>
-                                Contexto de Sobrevivência
-                            </h2>
-                            
-                            <div style="font-family: 'IBM Plex Sans', sans-serif; line-height: 1.6; color: #525252;">
-                                <h3 style="font-size: 1.125rem; color: #161616; margin-top: 1rem;">O Mundo Pós-Guerra</h3>
-                                <p>A 3ª Guerra Mundial e a detonação nuclear massiva transformaram a superfície em um ecossistema radioativo e hostil. Modificações biológicas aceleradas geraram mutações complexas na fauna e flora.</p>
-                                
-                                <h3 style="font-size: 1.125rem; color: #161616; margin-top: 1rem;">Sobreviventes</h3>
-                                <ul style="margin-left: 1.5rem;">
-                                    <li><strong>Habitantes de Cápsula/Bunkers:</strong> Ricos, protegidos em estase de alta tecnologia, ingênuos em relação ao mundo externo.</li>
-                                    <li><strong>Sobreviventes da Superfície:</strong> Populares, práticos, cínicos e adaptados às condições adversas.</li>
-                                </ul>
-                                
-                                <h3 style="font-size: 1.125rem; color: #161616; margin-top: 1rem;">As 5 Facções Dominantes</h3>
-                                <ol style="margin-left: 1.5rem;">
-                                    <li><strong>IA & Robótica:</strong> Foco em automação, robôs caçadores e exploração espacial. Acredita que a Terra é inviável.</li>
-                                    <li><strong>Neutralização Bioquímica:</strong> Pesquisa a reversão dos danos ambientais e purificação do planeta.</li>
-                                    <li><strong>Genética & Mutação Adaptativa:</strong> Experimentos para tornar humanos imunes à radiação.</li>
-                                    <li><strong>Logística & Mineração:</strong> Extração de matérias-primas e controle de recursos básicos.</li>
-                                    <li><strong>Maquinário Pesado & Exoesqueletos:</strong> Força braca e blindagem para erradicar focos biológicos hostis.</li>
-                                </ol>
-                                
-                                <h3 style="font-size: 1.125rem; color: #161616; margin-top: 1rem;">A Entidade Colmeia</h3>
-                                <p>Rede biológica integrada que controla cerca de 57% da vida mutante da superfície. Adorada por cultos fanáticos. Sua destruição desestabilizaria drasticamente o ecossistema.</p>
-                                
-                                <h3 style="font-size: 1.125rem; color: #161616; margin-top: 1rem;">Biologia Radioativa</h3>
-                                <p>A fauna desenvolveu resistência através de modulação imunológica, seleção natural com superexpressão de genes de supressão tumoral e reparo enzimático avançado de DNA. A ausência de atividade industrial humana foi determinante para sua proliferação.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Aba 2: Telemetria -->
+      <div id="tab-telemetry" class="tab-content">
+        <div class="grid-2">
+          <div class="card">
+            <h3>Filtros Biológicos</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">O2: 21% | CO2: 0.03% | Purificação de Ar: Ativa</p>
+          </div>
+          <div class="card">
+            <h3>Reservas de Energia</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Célula Quântica: 94% de Capacidade Restante</p>
+          </div>
         </div>
-    </main>
+      </div>
 
-    <!-- Footer -->
-    <footer class="arka-footer">
-        <div class="bx--grid">
-            <div class="bx--row">
-                <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                    <div class="footer-content">
-                        <div class="footer-brand">
-                            © 2024 Graphene Corp. | Programa ARKA
-                        </div>
-                        <div class="footer-slogan">
-                            "A continuação para uma nova humanidade" • "Nosso objetivo é cuidar e preservar."
-                        </div>
-                    </div>
-                </div>
+      <!-- Aba 3: Dados Pessoais do Usuário (Sempre Secundários) -->
+      <div id="tab-user" class="tab-content">
+        <div class="card user-profile-card">
+          <h3>Identificação do Operador</h3>
+          <div class="spec-grid" style="margin-top: 1rem;">
+            <div class="spec-box">
+              <span class="spec-label">Nome Completo</span>
+              <span class="spec-value" id="userName">Marcus Volkov</span>
             </div>
-        </div>
-    </footer>
+            <div class="spec-box">
+              <span class="spec-label">ID de Registro</span>
+              <span class="spec-value" id="userId">ARK-8902-X</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">Nível de Acesso</span>
+              <span class="spec-value">Nível 4 (Comandante)</span>
+            </div>
+          </div>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script>
-        // Setup sidebar responsiva para dashboard
-        function setupMobileSidebar() {
-            const sidebar = document.getElementById('mainSidebar');
-            const toggle = document.getElementById('mobileMenuToggle');
-            const overlay = document.getElementById('sidebarOverlay');
-            
-            if (toggle && sidebar && overlay) {
-                toggle.addEventListener('click', () => {
-                    sidebar.classList.toggle('open');
-                    overlay.classList.toggle('show');
-                });
-                
-                overlay.addEventListener('click', () => {
-                    sidebar.classList.remove('open');
-                    overlay.classList.remove('show');
-                });
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', setupMobileSidebar);
-    </script>
+          <!-- Botão de Logout -->
+          <button id="logoutBtn" class="btn-logout">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+            Encerrar Sessão (Logout)
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Graphene Corporation. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>

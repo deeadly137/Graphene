@@ -1,160 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programa ARKA | Graphene Corp. - Portal de Notícias</title>
-    
-    <!-- IBM Carbon Design System CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Estilos customizados -->
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphene - Tecnologia do Futuro</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="bx--body">
-    <!-- Sidebar Navigation (Desktop Only) -->
-    <nav class="arka-sidebar" id="mainSidebar">
-        <div class="arka-sidebar-header">
-            <img src="logo.svg" alt="Graphene Corp. Logo" class="arka-sidebar-logo">
-            <span class="arka-sidebar-brand">GRAPHENE CORP.</span>
-        </div>
-        <ul class="arka-sidebar-nav">
-            <li class="arka-sidebar-item">
-                <a href="index.html" class="arka-sidebar-link active">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M16 2L2 14v14h10V18h8v10h10V14L16 2zm0 3.5l10 8.5v12H20v-10h-8v10H6V14l10-8.5z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Início</span>
-                </a>
-            </li>
-            <li class="arka-sidebar-item">
-                <a href="news.html" class="arka-sidebar-link">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M28 10H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2zm0 16H4V12h24v14zM20 6h-2V4h-4v2h-2c-1.1 0-2 .9-2 2v2h10V8c0-1.1-.9-2-2-2zm-2 4H14V8h4v2z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Notícias</span>
-                </a>
-            </li>
-            <li class="arka-sidebar-item">
-                <a href="#sobre" class="arka-sidebar-link">
-                    <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M16 2a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14z"/>
-                        <path d="M16 20c-4.4 0-8 3.6-8 8h2c0-3.3 2.7-6 6-6s6 2.7 6 6h2c0-4.4-3.6-8-8-8z"/>
-                    </svg>
-                    <span class="arka-sidebar-label">Sobre Nós</span>
-                </a>
-            </li>
-        </ul>
-        <!-- Login no rodapé da sidebar (Desktop) -->
-        <div class="arka-sidebar-footer">
-            <a href="#" id="sidebarLoginLink" class="arka-sidebar-link" style="justify-content: center; padding-top: 1rem; padding-bottom: 1rem;">
-                <svg class="arka-sidebar-icon" viewBox="0 0 32 32" fill="currentColor">
-                    <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                </svg>
-                <span class="arka-sidebar-label">Login</span>
-            </a>
-        </div>
+<body>
+
+  <header class="arka-header">
+    <a href="index.html" class="brand-logo">
+      <img src="logo.svg" alt="Graphene Logo">
+      <span>GRAPHENE</span>
+    </a>
+    <nav>
+      <ul class="nav-menu">
+        <li>
+          <a href="index.html" class="nav-link active">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Início</span>
+          </a>
+        </li>
+        <li>
+          <a href="about.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <span>Sobre Nós</span>
+          </a>
+        </li>
+        <li>
+          <a href="news.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            <span>Notícias</span>
+          </a>
+        </li>
+        <li id="authNavItem">
+          <a href="login.html" class="btn-login-nav">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></svg>
+            <span>Entrar</span>
+          </a>
+        </li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Overlay para mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <main class="main-content">
+    <section class="hero-section">
+      <h1 class="hero-title">Inovação Avançada em Grafeno & Sistemas Arcturus</h1>
+      <p class="hero-subtitle">Engenharia de materiais do amanhã projetada para soluções de alta eficiência, ecossistemas isolados e preservação de dados vitais.</p>
+    </section>
 
-    <!-- Main Content Wrapper -->
-    <div class="main-content-wrapper">
-        <!-- Header (Mobile Only) -->
-        <header class="arka-header">
-            <div class="arka-brand">
-                <div class="arka-logo">GRAPHENE <span>CORP.</span></div>
-            </div>
-            <nav class="arka-header-nav">
-                <a href="index.html" class="arka-header-nav-link active">Início</a>
-                <a href="news.html" class="arka-header-nav-link">Notícias</a>
-                <a href="#" id="headerLoginLink" class="arka-header-nav-link">
-                    <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M22 16l-6-6v4H8v4h8v4l6-6zM6 4h10v2H6v20h10v2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    </svg>
-                </a>
-            </nav>
-        </header>
-
-        <!-- Main Content -->
-        <main class="bx--grid">
-            <!-- Notícias -->
-            <div class="bx--row">
-                <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                    <h2 class="bx--type-expressive-heading-03" style="margin-bottom: 1rem;">Últimas Notícias</h2>
-                </div>
-            </div>
-
-            <div class="bx--row">
-                <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                    <div class="news-grid" id="newsGrid">
-                        <!-- Notícias serão renderizadas via JS -->
-                        <p style="text-align: center; color: #6f6f6f;">Carregando notícias...</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="arka-footer">
-            <div class="bx--grid">
-                <div class="bx--row">
-                    <div class="bx--col-lg-16 bx--col-md-8 bx--col-sm-4">
-                        <div class="footer-content">
-                            <div class="footer-brand">
-                                © 2024 Graphene Corp. | Programa ARKA
-                            </div>
-                            <div class="footer-slogan">
-                                "A continuação para uma nova humanidade" • "Nosso objetivo é cuidar e preservar."
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    <div class="section-header">
+      <svg class="nav-icon" style="fill: var(--accent-cyan); width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <h2 class="section-title">Serviços & Soluções Corporativas</h2>
+    </div>
+    
+    <div class="grid-3">
+      <div class="card">
+        <h3>Síntese Molecular</h3>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Desenvolvimento de estruturas de grafeno de alta densidade para aplicações térmicas e mecânicas extremas.</p>
+      </div>
+      <div class="card">
+        <h3>Arquitetura Arka</h3>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Módulos autônomos de suporte à vida e contenção biológica com monitoramento preditivo de estado.</p>
+      </div>
+      <div class="card">
+        <h3>Sistemas Quânticos</h3>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Criptografia de dados e processamento distribuído integrado para cápsulas pessoais e corporativas.</p>
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/news.js"></script>
-    <script>
-        // Renderiza notícias no portal
-        document.addEventListener('DOMContentLoaded', () => {
-            const newsGrid = document.getElementById('newsGrid');
-            if (newsGrid) {
-                ARKA_NEWS.renderNewsGrid(newsGrid);
-            }
-            
-            // Setup login links (sidebar e header)
-            setupLoginLinks();
-        });
-        
-        // Setup login links based on auth state
-        function setupLoginLinks() {
-            const sidebarLoginLink = document.getElementById('sidebarLoginLink');
-            const headerLoginLink = document.getElementById('headerLoginLink');
-            
-            const handleLoginClick = (e) => {
-                e.preventDefault();
-                if (ARKA_AUTH.isAuthenticated()) {
-                    window.location.href = 'dashboard.html';
-                } else {
-                    window.location.href = 'login.html';
-                }
-            };
-            
-            if (sidebarLoginLink) {
-                sidebarLoginLink.addEventListener('click', handleLoginClick);
-            }
-            
-            if (headerLoginLink) {
-                headerLoginLink.addEventListener('click', handleLoginClick);
-            }
-        }
-    </script>
+    <!-- Destaque do Projeto Arka (Sem ser AD Banner) -->
+    <div class="section-header">
+      <svg class="nav-icon" style="fill: var(--primary-blue); width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      <h2 class="section-title">Ecossistema Projeto Arka</h2>
+    </div>
+
+    <div class="card card-indigo grid-2" style="align-items: center;">
+      <div>
+        <span class="spec-badge">PROJETO DE BANDEIRA</span>
+        <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem;">Cápsulas Pessoais Arcturus-V</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          A iniciativa Arka combina a tecnologia proprietária de compostos de grafeno com unidades de preservação habitável. Projetadas para isolamento total, garantia de integridade biológica e sincronização de dados via rede privada.
+        </p>
+        <a href="about.html" class="btn-login-nav" style="display: inline-flex;">Conhecer a Iniciativa Arka</a>
+      </div>
+      <div style="background: rgba(7, 36, 15, 0.5); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
+        <svg viewBox="0 0 24 24" style="width: 80px; height: 80px; fill: var(--accent-cyan);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        <h4 style="margin-top: 1rem;">Módulo de Contenção Estável</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Certificação Nível 5 de Isolação Externa</p>
+      </div>
+    </div>
+
+    <!-- Feed de Notícias no Final -->
+    <div class="section-header">
+      <svg class="nav-icon" style="fill: var(--accent-cyan); width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      <h2 class="section-title">Últimas Atualizações</h2>
+    </div>
+
+    <div id="latestNewsContainer" class="grid-3">
+      <!-- Carregado via JS -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Graphene Corporation. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/news.js"></script>
 </body>
 </html>

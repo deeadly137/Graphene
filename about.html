@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notícias - Graphene</title>
+  <title>Sobre Nós - Graphene</title>
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
   <header class="arka-header">
     <a href="index.html" class="brand-logo">
-      <!-- Imagem corrigida para logo.svg -->
       <img src="logo.svg" alt="Graphene Logo">
       <span>GRAPHENE</span>
     </a>
@@ -23,13 +22,13 @@
           </a>
         </li>
         <li>
-          <a href="about.html" class="nav-link">
+          <a href="about.html" class="nav-link active">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
             <span>Sobre Nós</span>
           </a>
         </li>
         <li>
-          <a href="news.html" class="nav-link active">
+          <a href="news.html" class="nav-link">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
             <span>Notícias</span>
           </a>
@@ -45,13 +44,24 @@
   </header>
 
   <main class="main-content">
-    <div class="section-header">
-      <svg class="nav-icon" style="fill: var(--accent-cyan); width: 28px; height: 28px;" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      <h1 class="section-title">Central de Notícias e Comunicados</h1>
-    </div>
+    <section class="hero-section">
+      <h1 class="hero-title">Sobre a Graphene</h1>
+      <p class="hero-subtitle">Liderando a revolução dos materiais sintéticos e engenharia de isolamento crítico para infraestruturas avançadas.</p>
+    </section>
 
-    <div id="allNewsContainer" class="grid-3">
-      <!-- Carregado via news.js -->
+    <div class="grid-2">
+      <div class="card">
+        <h3>Nossa Missão</h3>
+        <p style="color: var(--text-muted); margin-top: 1rem;">
+          Desenvolver tecnologias capazes de manter a vida e os dados em condições extremas, fornecendo módulos de contenção autônomos e materiais supercondutores baseados em cadeias de carbono molecular.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Visão Futurista</h3>
+        <p style="color: var(--text-muted); margin-top: 1rem;">
+          Tornar a tecnologia de cápsulas pessoais um padrão global de proteção, descentralizando recursos e garantindo autonomia total para operadores em ambientes críticos.
+        </p>
+      </div>
     </div>
   </main>
 
@@ -60,6 +70,5 @@
   </footer>
 
   <script src="js/auth.js"></script>
-  <script src="js/news.js"></script>
 </body>
 </html>
