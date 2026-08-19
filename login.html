@@ -3,69 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Graphene</title>
+  <title>Acesso à Cápsula — Graphene</title>
+  <meta name="description" content="Autentique-se com sua credencial Arka para acompanhar os sinais vitais da sua cápsula.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body data-page="login">
 
-  <!-- Header unificado sem sidebar-drawer antiga -->
-  <header class="arka-header">
-    <a href="index.html" class="brand-logo">
-      <img src="logo.svg" alt="Graphene Logo">
-      <span>GRAPHENE</span>
-    </a>
-    <nav>
-      <ul class="nav-menu">
-        <li>
-          <a href="index.html" class="nav-link">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.svg" alt="" class="brand-mark">
+        <span class="brand-text"><span class="b1">GRAPHENE</span><span class="b2">PROJETO ARKA</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link" data-nav="index">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             <span>Início</span>
-          </a>
-        </li>
-        <li>
-          <a href="about.html" class="nav-link">
+          </a></li>
+          <li><a href="about.html" class="nav-link" data-nav="about">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
             <span>Sobre Nós</span>
-          </a>
-        </li>
-        <li>
-          <a href="news.html" class="nav-link">
+          </a></li>
+          <li><a href="news.html" class="nav-link" data-nav="news">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            <span>Notícias</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+            <span>Comunicados</span>
+          </a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
+  <div class="hazard-strip" aria-hidden="true"></div>
 
-  <main class="main-content" style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
-    <div class="card card-indigo" style="width: 100%; max-width: 420px; padding: 2.5rem;">
-      <div style="text-align: center; margin-bottom: 2rem;">
-        <img src="logo.svg" alt="Graphene" style="height: 48px; margin-bottom: 1rem;">
-        <h2 style="font-size: 1.5rem;">Acesso à Cápsula</h2>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Insira suas credenciais corporativas</p>
+  <main class="main-content" style="margin-top: var(--header-h);">
+    <div class="auth-shell">
+      <div class="auth-panel" id="authPanel">
+        <div class="auth-head">
+          <img src="logo.svg" alt="Graphene">
+          <h2>Acesso à Cápsula</h2>
+          <p>INSIRA SUA CREDENCIAL ARKA</p>
+        </div>
+
+        <div class="auth-error" id="authError">
+          <svg class="nav-icon" viewBox="0 0 24 24" style="fill:var(--danger)"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+          <span>Credenciais não reconhecidas. Verifique o ID e a chave de acesso.</span>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label for="usernameInput">ID de Operador</label>
+            <input type="text" id="usernameInput" autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label for="passwordInput">Chave de Acesso</label>
+            <input type="password" id="passwordInput" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="btn-submit">
+            <svg class="nav-icon" viewBox="0 0 24 24" style="fill:#16130a"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            Autenticar
+          </button>
+        </form>
+
+        <div class="auth-divider">ou</div>
+
+        <button type="button" class="btn-guest" id="guestLoginBtn">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 4a4 4 0 100 8 4 4 0 000-8zm0 10c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z"/></svg>
+          Entrar como Operador Visitante
+        </button>
+
+        <div class="demo-chips">
+          <button type="button" class="demo-chip" data-username="richardSterling" data-password="arka2024">Richard Sterling</button>
+          <button type="button" class="demo-chip" data-username="victoriaAshford" data-password="preservar123">Victoria Ashford</button>
+          <button type="button" class="demo-chip" data-username="marcusVolkov" data-password="novaHumanidade">Marcus Volkov</button>
+        </div>
+        <p class="demo-note">Credenciais de demonstração — clique para preencher o formulário.</p>
       </div>
-
-      <form id="loginForm">
-        <div style="margin-bottom: 1.25rem;">
-          <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Usuário / Credencial</label>
-          <input type="text" id="usernameInput" required style="width: 100%; padding: 0.75rem; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: #fff; font-size: 1rem;">
-        </div>
-
-        <div style="margin-bottom: 1.5rem;">
-          <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Chave de Acesso</label>
-          <input type="password" id="passwordInput" required style="width: 100%; padding: 0.75rem; background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: #fff; font-size: 1rem;">
-        </div>
-
-        <button type="submit" class="btn-login-nav" style="width: 100%; justify-content: center; padding: 0.85rem;">Autenticar</button>
-      </form>
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Graphene Corporation. Todos os direitos reservados.</p>
+  <footer class="site-footer">
+    <div class="footer-bottom">&copy; <span id="footerYear"></span> Graphene Corporation. Todos os direitos reservados. Documento fictício — universo Projeto Arka.</div>
   </footer>
 
+  <script src="js/data.js"></script>
+  <script src="js/users.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

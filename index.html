@@ -3,110 +3,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graphene - Tecnologia do Futuro</title>
+  <title>Graphene — Projeto Arka | Cápsulas de Sobrevivência</title>
+  <meta name="description" content="Graphene Corporation desenvolve o Projeto Arka: cápsulas de hibernação em grafeno que preservam vidas humanas durante eventos de extinção. Sousa, 2058.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body data-page="index">
 
-  <header class="arka-header">
-    <a href="index.html" class="brand-logo">
-      <img src="logo.svg" alt="Graphene Logo">
-      <span>GRAPHENE</span>
-    </a>
-    <nav>
-      <ul class="nav-menu">
-        <li>
-          <a href="index.html" class="nav-link active">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.svg" alt="" class="brand-mark">
+        <span class="brand-text"><span class="b1">GRAPHENE</span><span class="b2">PROJETO ARKA</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link" data-nav="index">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             <span>Início</span>
-          </a>
-        </li>
-        <li>
-          <a href="about.html" class="nav-link">
+          </a></li>
+          <li><a href="about.html" class="nav-link" data-nav="about">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
             <span>Sobre Nós</span>
-          </a>
-        </li>
-        <li>
-          <a href="news.html" class="nav-link">
+          </a></li>
+          <li><a href="news.html" class="nav-link" data-nav="news">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            <span>Notícias</span>
-          </a>
-        </li>
-        <li id="authNavItem">
-          <a href="login.html" class="btn-login-nav">
-            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></svg>
-            <span>Entrar</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+            <span>Comunicados</span>
+          </a></li>
+          <li id="authNavItem">
+            <a href="login.html" class="btn-access">
+              <svg class="nav-icon" viewBox="0 0 24 24"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></svg>
+              <span>Acessar Cápsula</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
+  <div class="hazard-strip" aria-hidden="true"></div>
+  <div class="status-ticker">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
 
   <main class="main-content">
-    <section class="hero-section">
-      <h1 class="hero-title">Inovação Avançada em Grafeno & Sistemas Arcturus</h1>
-      <p class="hero-subtitle">Engenharia de materiais do amanhã projetada para soluções de alta eficiência, ecossistemas isolados e preservação de dados vitais.</p>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow is-brass">GRAPHENE CORP &middot; SETOR 7 &middot; ANO 2058</span>
+        <h1 class="hero-title">A humanidade continua<br><em>dentro do carbono.</em></h1>
+        <p class="hero-subtitle">Há dezessete anos o mundo vive sob a sombra da escalada nuclear. A Graphene constrói a resposta: cápsulas pessoais de grafeno capazes de manter uma vida humana em hibernação segura durante e após uma detonação — em qualquer lugar, sem depender de um abrigo estatal.</p>
+        <div class="hero-actions">
+          <a href="about.html" class="btn-primary">
+            <svg class="nav-icon" viewBox="0 0 24 24" style="fill:#16130a"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Conhecer o Projeto Arka
+          </a>
+          <a href="login.html" class="btn-ghost">Acessar minha cápsula</a>
+        </div>
+      </div>
+
+      <div class="capsule-vital" aria-hidden="true">
+        <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="capsuleGradient" cx="50%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#5fead4" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#5fead4" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle class="capsule-ring" cx="150" cy="190" r="165"/>
+          <ellipse class="capsule-shell" cx="150" cy="190" rx="112" ry="172"/>
+          <ellipse class="capsule-glow" cx="150" cy="145" rx="88" ry="118"/>
+          <path class="capsule-occupant" d="M150 88 a17 17 0 1 0 0.1 0 M122 128 q28 -10 56 0 q10 65 -6 125 q-22 14 -44 0 q-16 -60 -6 -125 Z"/>
+          <path class="capsule-wave" d="M35 300 h35 l9 -38 l14 66 l14 -96 l14 124 l9 -56 h150"/>
+        </svg>
+        <div class="capsule-readout">
+          <span class="rl">Suporte de Vida</span>
+          <span class="rv">● ATIVO</span>
+        </div>
+      </div>
     </section>
 
-    <div class="section-header">
-      <svg class="nav-icon" style="fill: var(--accent-cyan); width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      <h2 class="section-title">Serviços & Soluções Corporativas</h2>
-    </div>
-    
-    <div class="grid-3">
-      <div class="card">
-        <h3>Síntese Molecular</h3>
-        <p style="color: var(--text-muted); margin-top: 0.5rem;">Desenvolvimento de estruturas de grafeno de alta densidade para aplicações térmicas e mecânicas extremas.</p>
+    <section class="section section-tight">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">DIVISÕES OPERACIONAIS</span>
+          <h2 class="section-title">Serviços & Soluções Corporativas</h2>
+        </div>
+        <p class="section-lead">Três décadas de pesquisa em carbono aplicadas a um único problema: manter pessoas vivas quando o mundo lá fora deixa de ser habitável.</p>
       </div>
-      <div class="card">
-        <h3>Arquitetura Arka</h3>
-        <p style="color: var(--text-muted); margin-top: 0.5rem;">Módulos autônomos de suporte à vida e contenção biológica com monitoramento preditivo de estado.</p>
-      </div>
-      <div class="card">
-        <h3>Sistemas Quânticos</h3>
-        <p style="color: var(--text-muted); margin-top: 0.5rem;">Criptografia de dados e processamento distribuído integrado para cápsulas pessoais e corporativas.</p>
-      </div>
-    </div>
 
-    <!-- Destaque do Projeto Arka (Sem ser AD Banner) -->
-    <div class="section-header">
-      <svg class="nav-icon" style="fill: var(--primary-blue); width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-      <h2 class="section-title">Ecossistema Projeto Arka</h2>
-    </div>
-
-    <div class="card card-indigo grid-2" style="align-items: center;">
-      <div>
-        <span class="spec-badge">PROJETO DE BANDEIRA</span>
-        <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem;">Cápsulas Pessoais Arcturus-V</h3>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-          A iniciativa Arka combina a tecnologia proprietária de compostos de grafeno com unidades de preservação habitável. Projetadas para isolamento total, garantia de integridade biológica e sincronização de dados via rede privada.
-        </p>
-        <a href="about.html" class="btn-login-nav" style="display: inline-flex;">Conhecer a Iniciativa Arka</a>
+      <div class="grid-3">
+        <div class="card reveal">
+          <span class="card-index">01 — SÍNTESE</span>
+          <h3>Síntese Molecular</h3>
+          <p>Estruturas de grafeno de alta densidade, projetadas para blindagem térmica extrema e resistência a choque estrutural em cenários de detonação.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">02 — ARKA</span>
+          <h3>Arquitetura Arka</h3>
+          <p>Módulos autônomos de hibernação e contenção biológica, com monitoramento preditivo contínuo do estado vital do operador.</p>
+        </div>
+        <div class="card reveal">
+          <span class="card-index">03 — REDE</span>
+          <h3>Sistemas Quânticos</h3>
+          <p>Criptografia de dados e sincronização distribuída entre cápsulas pessoais e corporativas, mesmo em isolamento total.</p>
+        </div>
       </div>
-      <div style="background: rgba(7, 36, 15, 0.5); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
-        <svg viewBox="0 0 24 24" style="width: 80px; height: 80px; fill: var(--accent-cyan);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-        <h4 style="margin-top: 1rem;">Módulo de Contenção Estável</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Certificação Nível 5 de Isolação Externa</p>
+    </section>
+
+    <section class="section section-tight">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow is-brass">PROJETO DE BANDEIRA</span>
+          <h2 class="section-title">Ecossistema Projeto Arka</h2>
+        </div>
       </div>
-    </div>
 
-    <!-- Feed de Notícias no Final -->
-    <div class="section-header">
-      <svg class="nav-icon" style="fill: var(--accent-cyan); width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      <h2 class="section-title">Últimas Atualizações</h2>
-    </div>
+      <div class="card-feature reveal">
+        <div>
+          <span class="badge is-brass">Linha Arcturus</span>
+          <h3 style="font-family:var(--font-display); font-size:1.9rem; font-weight:800; margin-bottom:0.9rem;">Cápsulas Pessoais Arcturus</h3>
+          <p style="color:var(--text-dim); margin-bottom:1.75rem; max-width:52ch;">
+            O nome não é acaso. Séculos atrás, uma arca preservou a vida diante do dilúvio. Hoje, a Arka a preserva diante do fogo. Cada cápsula combina o composto proprietário de grafeno da Graphene com um sistema de hibernação habitável — isolamento total, integridade biológica garantida e sincronização de dados via rede privada, mesmo sob os escombros.
+          </p>
+          <a href="about.html" class="btn-primary" style="display:inline-flex;">Conhecer a iniciativa</a>
+        </div>
+        <div class="feature-visual">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+          <h4>Módulo de Contenção Estável</h4>
+          <p>Certificação Nível 5 de isolação externa</p>
+        </div>
+      </div>
+    </section>
 
-    <div id="latestNewsContainer" class="grid-3">
-      <!-- Carregado via JS -->
-    </div>
+    <section class="section section-tight">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">COMUNICADOS</span>
+          <h2 class="section-title">Últimas Atualizações</h2>
+        </div>
+        <a href="news.html" class="btn-ghost">Ver todos &rarr;</a>
+      </div>
+      <div id="latestNewsContainer" class="grid-3">
+        <p class="news-loading">Carregando comunicados&hellip;</p>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Graphene Corporation. Todos os direitos reservados.</p>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="logo.svg" alt="">
+          <span>GRAPHENE</span>
+        </div>
+        <p>Engenharia de materiais e sistemas de preservação de vida. Setor 7, Zona Neutra — operando desde 2041.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="about.html">Sobre Nós</a></li>
+          <li><a href="news.html">Comunicados</a></li>
+          <li><a href="login.html">Acessar Cápsula</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Projeto Arka</h5>
+        <ul>
+          <li><a href="about.html">Cápsulas Arcturus</a></li>
+          <li><a href="news.html">Boletins de Ameaça</a></li>
+          <li><a href="login.html">Protocolo de Acesso</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; <span id="footerYear"></span> Graphene Corporation. Todos os direitos reservados. Documento fictício — universo Projeto Arka.</div>
   </footer>
 
+  <script src="js/data.js"></script>
+  <script src="js/users.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/news.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

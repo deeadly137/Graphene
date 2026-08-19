@@ -3,51 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cápsula Pessoal - Graphene</title>
+  <title>Minha Cápsula — Graphene</title>
+  <meta name="description" content="Painel do operador: status da cápsula Arka, telemetria de suporte de vida e ficha do usuário.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body data-page="dashboard">
 
-  <!-- Header unificado (Overlay antigo e sidebar removidos totalmente) -->
-  <header class="arka-header">
-    <a href="index.html" class="brand-logo">
-      <img src="logo.svg" alt="Graphene Logo">
-      <span>GRAPHENE</span>
-    </a>
-    <nav>
-      <ul class="nav-menu">
-        <li>
-          <a href="index.html" class="nav-link">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo.svg" alt="" class="brand-mark">
+        <span class="brand-text"><span class="b1">GRAPHENE</span><span class="b2">PROJETO ARKA</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link" data-nav="index">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             <span>Início</span>
-          </a>
-        </li>
-        <li>
-          <a href="about.html" class="nav-link">
+          </a></li>
+          <li><a href="about.html" class="nav-link" data-nav="about">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
             <span>Sobre Nós</span>
-          </a>
-        </li>
-        <li>
-          <a href="news.html" class="nav-link">
+          </a></li>
+          <li><a href="news.html" class="nav-link" data-nav="news">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            <span>Notícias</span>
-          </a>
-        </li>
-        <li>
-          <a href="dashboard.html" class="nav-link active">
+            <span>Comunicados</span>
+          </a></li>
+          <li><a href="dashboard.html" class="nav-link active" data-nav="dashboard">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
             <span>Minha Cápsula</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+          </a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
+  <div class="hazard-strip" aria-hidden="true"></div>
 
   <main class="main-content">
-    
-    <!-- Navegação por abas customizada sem conflito de JS -->
-    <div class="tabs-container">
+    <div class="section section-tight" style="padding-top: 2.5rem;">
+
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">PAINEL DO OPERADOR</span>
+          <h2 class="section-title">Minha Cápsula</h2>
+        </div>
+      </div>
+
       <div class="tabs-header">
         <button class="tab-btn active" data-tab="capsule">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -55,37 +60,42 @@
         </button>
         <button class="tab-btn" data-tab="telemetry">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 15.66z"/></svg>
-          Telemetria & Propriedades
+          Telemetria
         </button>
         <button class="tab-btn" data-tab="user">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          Ficha do Usuário
+          Ficha do Operador
         </button>
       </div>
 
-      <!-- Aba 1: Dados da Cápsula (Destaque Principal) -->
+      <!-- Aba 1: Status da Cápsula -->
       <div id="tab-capsule" class="tab-content active">
-        <div class="capsule-hero-card">
-          <div class="capsule-image-holder">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="status-hero">
+          <div class="status-ring-holder">
+            <svg viewBox="0 0 130 130">
+              <circle class="status-ring-bg" cx="65" cy="65" r="52"/>
+              <circle class="status-ring-fg" id="statusRingFg" cx="65" cy="65" r="52"/>
+              <text x="65" y="60" text-anchor="middle" class="status-ring-text" id="statusRingText">—</text>
+              <text x="65" y="78" text-anchor="middle" class="status-ring-sub">INTEGRIDADE DO GRAFENO</text>
+            </svg>
           </div>
           <div>
-            <span class="spec-badge">UNIDADE OPERACIONAL ATIVA</span>
-            <h2 id="capsuleModelTitle" style="font-size: 2rem; margin-bottom: 0.5rem;">Cápsula Arcturus MK-IV</h2>
-            <p style="color: var(--text-muted);">Módulo autônomo com suporte de vida avançado, blindagem sintética de grafeno e barreira eletromagnética.</p>
+            <span class="badge" id="capsuleStateBadge">—</span>
+            <h2 id="capsuleModelTitle" style="font-family:var(--font-display); font-size:2rem; font-weight:800; margin-bottom:0.5rem;">Cápsula —</h2>
+            <p style="color:var(--text-dim);" id="capsuleStateDesc">Carregando estado da cápsula&hellip;</p>
 
             <div class="spec-grid">
               <div class="spec-box">
-                <span class="spec-label">Tempo de Autonomia</span>
-                <span class="spec-value" id="specRuntime">720 Horas</span>
+                <span class="spec-label">Autonomia</span>
+                <span class="spec-value" id="specRuntime">—</span>
               </div>
               <div class="spec-box">
-                <span class="spec-label">Integridade do Grafeno</span>
-                <span class="spec-value" style="color: var(--accent-cyan);">99.8%</span>
+                <span class="spec-label">Isolamento</span>
+                <span class="spec-value" id="specIsolation">—</span>
               </div>
               <div class="spec-box">
                 <span class="spec-label">Pressão Interna</span>
-                <span class="spec-value">1.01 atm</span>
+                <span class="spec-value" id="specPressure">—</span>
               </div>
             </div>
           </div>
@@ -97,50 +107,82 @@
         <div class="grid-2">
           <div class="card">
             <h3>Filtros Biológicos</h3>
-            <p style="color: var(--text-muted); margin-top: 0.5rem;">O2: 21% | CO2: 0.03% | Purificação de Ar: Ativa</p>
+            <div style="margin-top:1rem;">
+              <div class="telemetry-row"><span class="t-label">Oxigênio (O2)</span><span class="t-value" id="o2Value">—</span></div>
+              <div class="telemetry-row"><span class="t-label">Dióxido de Carbono (CO2)</span><span class="t-value" id="co2Value">—</span></div>
+              <div class="telemetry-row"><span class="t-label">Temperatura Interna</span><span class="t-value" id="tempValue">—</span></div>
+              <div class="telemetry-row"><span class="t-label">Radiação Externa</span><span class="t-value" id="radValue">—</span></div>
+            </div>
           </div>
           <div class="card">
             <h3>Reservas de Energia</h3>
-            <p style="color: var(--text-muted); margin-top: 0.5rem;">Célula Quântica: 94% de Capacidade Restante</p>
+            <div style="margin-top:1.5rem;">
+              <div class="telemetry-row" style="border:none; padding-top:0;">
+                <span class="t-label">Célula Quântica</span>
+                <span class="t-value" id="energyValue">—</span>
+              </div>
+              <div class="meter" style="width:100%;"><div class="meter-fill" id="energyMeter" style="width:0%"></div></div>
+              <p style="color:var(--text-faint); font-size:0.82rem; margin-top:1.25rem;">Recarga automática via coletor térmico externo quando a cápsula detecta luz ou calor ambiente.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Aba 3: Dados Pessoais do Usuário (Sempre Secundários) -->
+      <!-- Aba 3: Ficha do Operador -->
       <div id="tab-user" class="tab-content">
-        <div class="card user-profile-card">
-          <h3>Identificação do Operador</h3>
-          <div class="spec-grid" style="margin-top: 1rem;">
-            <div class="spec-box">
-              <span class="spec-label">Nome Completo</span>
-              <span class="spec-value" id="userName">Marcus Volkov</span>
+        <div class="id-card">
+          <div class="id-head">
+            <div class="id-avatar" id="userAvatar">—</div>
+            <div>
+              <h3 id="userName">—</h3>
+              <span id="userId">—</span>
             </div>
-            <div class="spec-box">
-              <span class="spec-label">ID de Registro</span>
-              <span class="spec-value" id="userId">ARK-8902-X</span>
-            </div>
+          </div>
+          <div class="spec-grid">
             <div class="spec-box">
               <span class="spec-label">Nível de Acesso</span>
-              <span class="spec-value">Nível 4 (Comandante)</span>
+              <span class="spec-value" id="userLevel" style="font-size:1rem;">—</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">Tipo Sanguíneo</span>
+              <span class="spec-value" id="bioBloodType" style="font-size:1rem;">—</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">Gênero</span>
+              <span class="spec-value" id="bioGender" style="font-size:1rem;">—</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">Altura</span>
+              <span class="spec-value" id="bioHeight" style="font-size:1rem;">—</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">Peso</span>
+              <span class="spec-value" id="bioWeight" style="font-size:1rem;">—</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">Idade</span>
+              <span class="spec-value" id="bioAge" style="font-size:1rem;">—</span>
             </div>
           </div>
 
-          <!-- Botão de Logout -->
           <button id="logoutBtn" class="btn-logout">
             <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
-            Encerrar Sessão (Logout)
+            Encerrar Sessão
           </button>
         </div>
       </div>
-    </div>
 
+    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Graphene Corporation. Todos os direitos reservados.</p>
+  <footer class="site-footer">
+    <div class="footer-bottom">&copy; <span id="footerYear"></span> Graphene Corporation. Todos os direitos reservados. Documento fictício — universo Projeto Arka.</div>
   </footer>
 
+  <script src="js/data.js"></script>
+  <script src="js/users.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/dashboard.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
