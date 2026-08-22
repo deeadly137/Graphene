@@ -43,46 +43,79 @@
       </button>
     </div>
   </header>
-  <div class="hazard-strip" aria-hidden="true"></div>
-  <div class="status-ticker">
-    <div class="ticker-track" id="tickerTrack"></div>
-  </div>
 
   <main class="main-content">
 
     <section class="hero">
-      <div>
-        <span class="eyebrow is-brass">GRAPHENE CORP &middot; SETOR 7 &middot; ANO 2058</span>
-        <h1 class="hero-title">A humanidade continua<br><em>dentro do carbono.</em></h1>
+      <div class="hero-copy">
+        <div class="hero-callout">
+          <span class="eyebrow-dark">GRAPHENE CORP &middot; SETOR 7 &middot; ANO 2058</span>
+          <h1 class="hero-title">A humanidade continua<br><em>dentro do carbono.</em></h1>
+        </div>
         <p class="hero-subtitle">Há dezessete anos o mundo vive sob a sombra da escalada nuclear. A Graphene constrói a resposta: cápsulas pessoais de grafeno capazes de manter uma vida humana em hibernação segura durante e após uma detonação — em qualquer lugar, sem depender de um abrigo estatal.</p>
         <div class="hero-actions">
           <a href="about.html" class="btn-primary">
             <svg class="nav-icon" viewBox="0 0 24 24" style="fill:#16130a"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            Conhecer o Projeto Arka
+            Nos conheça
           </a>
           <a href="login.html" class="btn-ghost">Acessar minha cápsula</a>
         </div>
+        <a href="about.html" class="hero-more-link">Ver todas as cápsulas <span aria-hidden="true">&rarr;</span></a>
       </div>
 
-      <div class="capsule-vital" aria-hidden="true">
-        <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="capsuleGradient" cx="50%" cy="32%" r="65%">
-              <stop offset="0%" stop-color="#5fead4" stop-opacity="0.4"/>
-              <stop offset="100%" stop-color="#5fead4" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <circle class="capsule-ring" cx="150" cy="190" r="165"/>
-          <ellipse class="capsule-shell" cx="150" cy="190" rx="112" ry="172"/>
-          <ellipse class="capsule-glow" cx="150" cy="145" rx="88" ry="118"/>
-          <path class="capsule-occupant" d="M150 88 a17 17 0 1 0 0.1 0 M122 128 q28 -10 56 0 q10 65 -6 125 q-22 14 -44 0 q-16 -60 -6 -125 Z"/>
-          <path class="capsule-wave" d="M35 300 h35 l9 -38 l14 66 l14 -96 l14 124 l9 -56 h150"/>
-        </svg>
-        <div class="capsule-readout">
-          <span class="rl">Suporte de Vida</span>
-          <span class="rv">● ATIVO</span>
+      <div class="octo-grid" aria-hidden="true">
+        <div class="octo-cell octo-cell--hero">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="capsuleGradientHero" cx="50%" cy="34%" r="65%">
+                <stop offset="0%" stop-color="#5fead4" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#5fead4" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle class="capsule-ring" cx="100" cy="104" r="92"/>
+            <ellipse class="capsule-shell" cx="100" cy="104" rx="62" ry="92" style="fill:rgba(23,31,33,0.9)"/>
+            <ellipse cx="100" cy="76" rx="48" ry="60" fill="url(#capsuleGradientHero)" opacity="0.9"/>
+            <path class="capsule-occupant" d="M100 46 a11 11 0 1 0 0.1 0 M82 68 q18 -7 36 0 q7 40 -4 78 q-14 9 -28 0 q-11 -38 -4 -78 Z"/>
+            <path class="capsule-wave" d="M22 168 h20 l6 -22 l8 38 l8 -56 l8 72 l6 -32 h100"/>
+          </svg>
+          <div class="capsule-readout">
+            <span class="rl">Suporte de Vida</span>
+            <span class="rv">● ATIVO</span>
+          </div>
+        </div>
+        <div class="octo-cell octo-cell--b">
+          <svg class="octo-cell-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="oc-line" points="30,4 50,16 50,44 30,56 10,44 10,16"/>
+            <polygon class="oc-line-dim" points="30,16 40,22 40,38 30,44 20,38 20,22"/>
+          </svg>
+          <span class="octo-caption">Grafeno</span>
+        </div>
+        <div class="octo-cell octo-cell--c">
+          <svg class="octo-cell-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle class="oc-line" cx="30" cy="30" r="22"/>
+            <circle class="oc-line" cx="30" cy="30" r="12"/>
+            <circle class="oc-dot" cx="30" cy="30" r="3"/>
+          </svg>
+          <span class="octo-caption">Monitoramento</span>
+        </div>
+        <div class="octo-cell octo-cell--d">
+          <svg class="octo-cell-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path class="oc-line" d="M6 34 h9 l4 -14 l6 24 l6 -34 l6 40 l4 -16 h13"/>
+          </svg>
+          <span class="octo-caption">Vitais</span>
+        </div>
+        <div class="octo-cell octo-cell--e">
+          <svg class="octo-cell-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle class="oc-line" cx="16" cy="16" r="4"/>
+            <circle class="oc-line" cx="44" cy="16" r="4"/>
+            <circle class="oc-line" cx="30" cy="40" r="4"/>
+            <path class="oc-line-dim" d="M16 16 L44 16 M16 16 L30 40 M44 16 L30 40"/>
+          </svg>
+          <span class="octo-caption">Rede</span>
         </div>
       </div>
+
+      <div class="hero-spectrum" aria-hidden="true"></div>
     </section>
 
     <section class="section section-tight">
@@ -114,26 +147,39 @@
     </section>
 
     <section class="section section-tight">
-      <div class="section-head reveal">
+      <div class="card-feature card-invite reveal">
         <div>
-          <span class="eyebrow is-brass">PROJETO DE BANDEIRA</span>
-          <h2 class="section-title">Ecossistema Projeto Arka</h2>
-        </div>
-      </div>
-
-      <div class="card-feature reveal">
-        <div>
-          <span class="badge is-brass">Linha Arcturus</span>
-          <h3 style="font-family:var(--font-display); font-size:1.9rem; font-weight:800; margin-bottom:0.9rem;">Cápsulas Pessoais Arcturus</h3>
-          <p style="color:var(--text-dim); margin-bottom:1.75rem; max-width:52ch;">
-            O nome não é acaso. Séculos atrás, uma arca preservou a vida diante do dilúvio. Hoje, a Arka a preserva diante do fogo. Cada cápsula combina o composto proprietário de grafeno da Graphene com um sistema de hibernação habitável — isolamento total, integridade biológica garantida e sincronização de dados via rede privada, mesmo sob os escombros.
+          <span class="eyebrow is-brass">PROJETO ARKA</span>
+          <h2 class="invite-title">Uma cápsula vazia.<br><em>À espera de você.</em></h2>
+          <p style="color:var(--text-dim); margin-bottom:1.75rem; max-width:46ch;">
+            Cada unidade Arka é fabricada sob medida e reservada individualmente antes mesmo de ter um nome. Esta aqui já está pronta, esterilizada e selada — falta apenas alguém para ocupá-la.
           </p>
-          <a href="about.html" class="btn-primary" style="display:inline-flex;">Conhecer a iniciativa</a>
+          <div class="card-feature-actions">
+            <a href="about.html" class="btn-primary">Nos conheça!</a>
+            <a href="login.html" class="btn-ghost">Acessar minha cápsula</a>
+          </div>
         </div>
-        <div class="feature-visual">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-          <h4>Módulo de Contenção Estável</h4>
-          <p>Certificação Nível 5 de isolação externa</p>
+        <div class="capsule-invite">
+          <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interior vazio de uma cápsula Arka, vista em grande zoom e levemente inclinada">
+            <defs>
+              <radialGradient id="capsuleGradientInvite" cx="50%" cy="50%" r="65%">
+                <stop offset="0%" stop-color="#5fead4" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#5fead4" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <g transform="rotate(7 200 220)">
+              <ellipse class="ci-wall-outer" cx="200" cy="230" rx="340" ry="380"/>
+              <ellipse class="ci-wall" cx="200" cy="205" rx="250" ry="290"/>
+              <ellipse class="ci-wall" cx="200" cy="185" rx="170" ry="205"/>
+              <ellipse class="ci-wall ci-wall--inner" cx="195" cy="165" rx="100" ry="125"/>
+              <ellipse cx="190" cy="150" rx="110" ry="130" fill="url(#capsuleGradientInvite)"/>
+              <line class="ci-seam" x1="200" y1="-20" x2="200" y2="460"/>
+            </g>
+          </svg>
+          <div class="capsule-readout ci-readout">
+            <span class="rl">Vaga</span>
+            <span class="rv">● Aguardando ocupante</span>
+          </div>
         </div>
       </div>
     </section>
@@ -143,6 +189,7 @@
         <div>
           <span class="eyebrow">COMUNICADOS</span>
           <h2 class="section-title">Últimas Atualizações</h2>
+          <p class="section-lead">Boletins de ameaça, relatórios de status e novidades de fabricação, publicados pela Graphene conforme a situação evolui.</p>
         </div>
         <a href="news.html" class="btn-ghost">Ver todos &rarr;</a>
       </div>

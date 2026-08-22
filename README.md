@@ -15,12 +15,12 @@ Site estático puro (HTML/CSS/JS, sem build step), pronto para publicação no *
 ├── 404.html               Página de erro temática
 ├── css/main.css        Estilos globais
 ├── js/
-│   ├── data.js            Constantes globais (ticker, specs de cápsulas)
+│   ├── data.js            Constantes globais (, specs de cápsulas)
 │   ├── users.js          Operadores cadastrados (dados de demonstração)
 │   ├── auth.js            Sessão / autenticação (localStorage + sessionStorage)
 │   ├── dashboard.js  Lógica do painel do operador
 │   ├── news.js           Carregamento de notícias + visualização de artigo
-│   └── main.js           Menu mobile, ticker, revelação ao rolar
+│   └── main.js           Menu mobile, , revelação ao rolar
 ├── news/                    Conteúdo de notícias (manifest + preview/full por item)
 └── logo.svg
 ```

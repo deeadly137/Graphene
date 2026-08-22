@@ -6,26 +6,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupTabs();
   setupLogout();
+  renderGreeting(user);
   renderCapsuleStatus(user);
   renderSpecs(user);
+  renderStatusMetrics(user);
   renderTelemetry(user);
-  renderUserCard(user);
 });
+
+function renderGreeting(user) {
+  const firstName = (user.name || '').split(' ')[0];
+  const nameEl = document.getElementById('greetingName');
+  if (nameEl) nameEl.textContent = firstName || user.name || 'Operador';
+}
 
 function setupTabs() {
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
 
+  function activate(target) {
+    tabBtns.forEach((b) => b.classList.toggle('active', b.getAttribute('data-tab') === target));
+    tabContents.forEach((c) => c.classList.toggle('active', c.id === `tab-${target}`));
+  }
+
   tabBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const target = btn.getAttribute('data-tab');
-      tabBtns.forEach((b) => b.classList.remove('active'));
-      tabContents.forEach((c) => c.classList.remove('active'));
-      btn.classList.add('active');
-      const content = document.getElementById(`tab-${target}`);
-      if (content) content.classList.add('active');
-    });
+    btn.addEventListener('click', () => activate(btn.getAttribute('data-tab')));
   });
+
+  const hashTarget = (window.location.hash || '').replace('#tab-', '');
+  if (hashTarget && document.getElementById(`tab-${hashTarget}`)) activate(hashTarget);
 }
 
 function setupLogout() {
@@ -77,9 +85,25 @@ function renderSpecs(user) {
   const runtimeEl = document.getElementById('specRuntime');
   const isolationEl = document.getElementById('specIsolation');
   const pressureEl = document.getElementById('specPressure');
+  const materialEl = document.getElementById('specMaterial');
   if (runtimeEl) runtimeEl.textContent = `${specs.autonomyHours} horas`;
   if (isolationEl) isolationEl.textContent = specs.isolationRating;
   if (pressureEl) pressureEl.textContent = specs.pressure;
+  if (materialEl) materialEl.textContent = specs.material;
+}
+
+// Resumo rápido de biometria do ocupante e condições internas do casulo,
+// exibido junto às informações do equipamento na aba "Status da Cápsula".
+function renderStatusMetrics(user) {
+  const heart = seededValue(user.id + 'h', 52, 64);
+  const o2 = seededValue(user.id + 'o', 20.5, 21.4);
+  const temp = seededValue(user.id + 't', 19.5, 22.5);
+  const rad = seededValue(user.id + 'r', 0.08, 0.31);
+
+  setText('statusHeartValue', `${heart.toFixed(0)} bpm`);
+  setText('statusO2Value', `${o2.toFixed(1)}%`);
+  setText('statusTempValue', `${temp.toFixed(1)}°C`);
+  setText('statusRadValue', `${rad.toFixed(2)} mSv/h`);
 }
 
 function renderTelemetry(user) {
@@ -105,25 +129,6 @@ function setMeter(barId, valueId, value, unit) {
   const val = document.getElementById(valueId);
   if (bar) bar.style.width = `${value}%`;
   if (val) val.textContent = `${value.toFixed(0)}${unit}`;
-}
-
-function renderUserCard(user) {
-  const nameEl = document.getElementById('userName');
-  const idEl = document.getElementById('userId');
-  const levelEl = document.getElementById('userLevel');
-  const avatarEl = document.getElementById('userAvatar');
-  const bio = user.biometric || {};
-
-  if (nameEl) nameEl.textContent = user.name;
-  if (idEl) idEl.textContent = user.id;
-  if (levelEl) levelEl.textContent = user.accessLevel || '—';
-  if (avatarEl) avatarEl.textContent = user.name.split(' ').map((n) => n[0]).slice(0, 2).join('').toUpperCase();
-
-  setText('bioBloodType', bio.bloodType);
-  setText('bioHeight', typeof bio.height === 'number' ? `${bio.height} cm` : '—');
-  setText('bioWeight', typeof bio.weight === 'number' ? `${bio.weight} kg` : '—');
-  setText('bioAge', typeof bio.age === 'number' ? `${bio.age} anos` : '—');
-  setText('bioGender', bio.gender);
 }
 
 function setText(id, value) {

@@ -49,7 +49,8 @@
       <div class="section-head">
         <div>
           <span class="eyebrow">PAINEL DO OPERADOR</span>
-          <h2 class="section-title">Minha Cápsula</h2>
+          <h1 class="capsule-greeting-title">Bem-vindo(a) de volta, <span id="greetingName">—</span></h1>
+          <p class="capsule-greeting-sub">Este é o status atual da sua cápsula Arka.</p>
         </div>
       </div>
 
@@ -71,32 +72,77 @@
       <!-- Aba 1: Status da Cápsula -->
       <div id="tab-capsule" class="tab-content active">
         <div class="status-hero">
-          <div class="status-ring-holder">
-            <svg viewBox="0 0 130 130">
-              <circle class="status-ring-bg" cx="65" cy="65" r="52"/>
-              <circle class="status-ring-fg" id="statusRingFg" cx="65" cy="65" r="52"/>
-              <text x="65" y="60" text-anchor="middle" class="status-ring-text" id="statusRingText">—</text>
-              <text x="65" y="78" text-anchor="middle" class="status-ring-sub">INTEGRIDADE DO GRAFENO</text>
-            </svg>
-          </div>
           <div>
             <span class="badge" id="capsuleStateBadge">—</span>
             <h2 id="capsuleModelTitle" style="font-family:var(--font-display); font-size:2rem; font-weight:800; margin-bottom:0.5rem;">Cápsula —</h2>
             <p style="color:var(--text-dim);" id="capsuleStateDesc">Carregando estado da cápsula&hellip;</p>
 
-            <div class="spec-grid">
-              <div class="spec-box">
-                <span class="spec-label">Autonomia</span>
-                <span class="spec-value" id="specRuntime">—</span>
+            <div class="status-block">
+              <h4 class="status-block-title">Informações do Equipamento</h4>
+              <div class="spec-grid spec-grid--split">
+                <div class="spec-box">
+                  <span class="spec-label">Composto</span>
+                  <span class="spec-value" id="specMaterial" style="font-size:1rem;">—</span>
+                </div>
+                <div class="spec-box">
+                  <span class="spec-label">Autonomia</span>
+                  <span class="spec-value" id="specRuntime">—</span>
+                </div>
+                <div class="spec-box">
+                  <span class="spec-label">Isolamento</span>
+                  <span class="spec-value" id="specIsolation">—</span>
+                </div>
+                <div class="spec-box">
+                  <span class="spec-label">Pressão Interna</span>
+                  <span class="spec-value" id="specPressure">—</span>
+                </div>
               </div>
-              <div class="spec-box">
-                <span class="spec-label">Isolamento</span>
-                <span class="spec-value" id="specIsolation">—</span>
+            </div>
+
+            <div class="status-block">
+              <h4 class="status-block-title">Status — Biometria &amp; Casulo</h4>
+              <div class="spec-grid spec-grid--split">
+                <div class="spec-box">
+                  <span class="spec-label">Frequência Cardíaca</span>
+                  <span class="spec-value" id="statusHeartValue" style="font-size:1rem;">—</span>
+                </div>
+                <div class="spec-box">
+                  <span class="spec-label">Temperatura Interna</span>
+                  <span class="spec-value" id="statusTempValue" style="font-size:1rem;">—</span>
+                </div>
+                <div class="spec-box">
+                  <span class="spec-label">Oxigênio (O2)</span>
+                  <span class="spec-value" id="statusO2Value" style="font-size:1rem;">—</span>
+                </div>
+                <div class="spec-box">
+                  <span class="spec-label">Radiação Externa</span>
+                  <span class="spec-value" id="statusRadValue" style="font-size:1rem;">—</span>
+                </div>
               </div>
-              <div class="spec-box">
-                <span class="spec-label">Pressão Interna</span>
-                <span class="spec-value" id="specPressure">—</span>
-              </div>
+            </div>
+          </div>
+
+          <div class="status-visual">
+            <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Representação gráfica do operador dentro da cápsula">
+              <defs>
+                <radialGradient id="capsuleGradientDash" cx="50%" cy="32%" r="65%">
+                  <stop offset="0%" stop-color="#5fead4" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#5fead4" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <circle class="capsule-ring" cx="150" cy="190" r="165"/>
+              <ellipse class="capsule-shell" cx="150" cy="190" rx="112" ry="172"/>
+              <ellipse class="capsule-glow" cx="150" cy="145" rx="88" ry="118" style="fill:url(#capsuleGradientDash)"/>
+              <path class="capsule-occupant" d="M150 88 a17 17 0 1 0 0.1 0 M122 128 q28 -10 56 0 q10 65 -6 125 q-22 14 -44 0 q-16 -60 -6 -125 Z"/>
+              <path class="capsule-wave" d="M35 300 h35 l9 -38 l14 66 l14 -96 l14 124 l9 -56 h150"/>
+            </svg>
+            <div class="status-ring-holder">
+              <svg viewBox="0 0 130 130">
+                <circle class="status-ring-bg" cx="65" cy="65" r="52"/>
+                <circle class="status-ring-fg" id="statusRingFg" cx="65" cy="65" r="52"/>
+                <text x="65" y="62" text-anchor="middle" class="status-ring-text" id="statusRingText">—</text>
+                <text x="65" y="76" text-anchor="middle" class="status-ring-sub">GRAFENO</text>
+              </svg>
             </div>
           </div>
         </div>
@@ -130,46 +176,124 @@
 
       <!-- Aba 3: Ficha do Operador -->
       <div id="tab-user" class="tab-content">
-        <div class="id-card">
-          <div class="id-head">
+        <form id="sheetForm" class="sheet-card" novalidate>
+
+          <div class="sheet-header">
             <div class="id-avatar" id="userAvatar">—</div>
-            <div>
-              <h3 id="userName">—</h3>
-              <span id="userId">—</span>
-            </div>
-          </div>
-          <div class="spec-grid">
-            <div class="spec-box">
-              <span class="spec-label">Nível de Acesso</span>
-              <span class="spec-value" id="userLevel" style="font-size:1rem;">—</span>
-            </div>
-            <div class="spec-box">
-              <span class="spec-label">Tipo Sanguíneo</span>
-              <span class="spec-value" id="bioBloodType" style="font-size:1rem;">—</span>
-            </div>
-            <div class="spec-box">
-              <span class="spec-label">Gênero</span>
-              <span class="spec-value" id="bioGender" style="font-size:1rem;">—</span>
-            </div>
-            <div class="spec-box">
-              <span class="spec-label">Altura</span>
-              <span class="spec-value" id="bioHeight" style="font-size:1rem;">—</span>
-            </div>
-            <div class="spec-box">
-              <span class="spec-label">Peso</span>
-              <span class="spec-value" id="bioWeight" style="font-size:1rem;">—</span>
-            </div>
-            <div class="spec-box">
-              <span class="spec-label">Idade</span>
-              <span class="spec-value" id="bioAge" style="font-size:1rem;">—</span>
+            <div class="sheet-header-fields">
+              <div class="field">
+                <label for="sheetName">Nome do Operador</label>
+                <input type="text" id="sheetName" required>
+              </div>
+              <div class="sheet-header-meta">
+                <span id="sheetUsernameDisplay">—</span>
+                <span id="sheetIdDisplay">—</span>
+              </div>
             </div>
           </div>
 
-          <button id="logoutBtn" class="btn-logout">
-            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
-            Encerrar Sessão
-          </button>
-        </div>
+          <div class="sheet-save-bar">
+            <button type="submit" class="btn-primary">
+              <svg class="nav-icon" viewBox="0 0 24 24" style="fill:#16130a"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+              Salvar Ficha
+            </button>
+            <span class="sheet-save-msg" id="sheetSaveMsg"></span>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Identificação</h4>
+            <div class="sheet-grid sheet-grid--4">
+              <div class="field">
+                <label for="sheetClass">Classe Operacional</label>
+                <select id="sheetClass" class="sheet-select"></select>
+              </div>
+              <div class="field">
+                <label for="sheetSector">Setor de Origem</label>
+                <select id="sheetSector" class="sheet-select"></select>
+              </div>
+              <div class="field">
+                <label for="sheetLevel">Nível de Acesso</label>
+                <select id="sheetLevel" class="sheet-select">
+                  <option>Nível 1 (Recruta)</option>
+                  <option>Nível 2 (Operador)</option>
+                  <option>Nível 3 (Operador Sênior)</option>
+                  <option>Nível 4 (Comandante)</option>
+                  <option>Nível 5 (Diretoria)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="sheetCapsule">Cápsula Designada</label>
+                <select id="sheetCapsule" class="sheet-select"></select>
+              </div>
+            </div>
+            <div class="sheet-grid sheet-grid--4">
+              <div class="field"><label for="sheetBlood">Tipo Sanguíneo</label><input type="text" id="sheetBlood" class="sheet-input" maxlength="4"></div>
+              <div class="field"><label for="sheetGender">Gênero</label><input type="text" id="sheetGender" class="sheet-input"></div>
+              <div class="field"><label for="sheetHeight">Altura (cm)</label><input type="number" id="sheetHeight" class="sheet-input" min="0"></div>
+              <div class="field"><label for="sheetWeight">Peso (kg)</label><input type="number" id="sheetWeight" class="sheet-input" min="0"></div>
+            </div>
+            <div class="field" style="max-width:160px;"><label for="sheetAge">Idade</label><input type="number" id="sheetAge" class="sheet-input" min="0"></div>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Atributos</h4>
+            <div class="attr-grid" id="attrGrid"></div>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Recursos Vitais</h4>
+            <div class="sheet-grid sheet-grid--4">
+              <div class="field"><label for="vitalIntegrity">Integridade Biológica</label><input type="number" id="vitalIntegrity" class="sheet-input" min="0"></div>
+              <div class="field"><label for="vitalIntegrityMax">Integridade Máxima</label><input type="number" id="vitalIntegrityMax" class="sheet-input" min="1"></div>
+              <div class="field"><label for="vitalShielding">Blindagem da Cápsula</label><input type="number" id="vitalShielding" class="sheet-input" min="0"></div>
+              <div class="field"><label for="vitalInitiative">Iniciativa de Emergência</label><input type="number" id="vitalInitiative" class="sheet-input"></div>
+            </div>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Perícias <span class="sheet-hint">bônus de especialização +2</span></h4>
+            <div class="skills-list" id="skillsList"></div>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Equipamento</h4>
+            <div class="equip-list" id="equipList"></div>
+            <button type="button" class="btn-ghost" id="equipAddBtn">+ Adicionar item</button>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Perfil Psicológico</h4>
+            <div class="sheet-grid sheet-grid--2">
+              <div class="field"><label for="sheetTrait">Traço Marcante</label><input type="text" id="sheetTrait" class="sheet-input"></div>
+              <div class="field"><label for="sheetMotivation">Motivação</label><input type="text" id="sheetMotivation" class="sheet-input"></div>
+              <div class="field"><label for="sheetBond">Vínculo</label><input type="text" id="sheetBond" class="sheet-input"></div>
+              <div class="field"><label for="sheetFlaw">Falha</label><input type="text" id="sheetFlaw" class="sheet-input"></div>
+            </div>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Histórico</h4>
+            <div class="field"><textarea id="sheetBackstory" class="sheet-textarea" rows="4" placeholder="Como este operador chegou até aqui..."></textarea></div>
+          </div>
+
+          <div class="sheet-section">
+            <h4 class="status-block-title">Credenciais de Acesso</h4>
+            <div class="sheet-grid sheet-grid--2">
+              <div class="field"><label>ID de Operador (login)</label><input type="text" id="sheetUsernameField" class="sheet-input" disabled></div>
+              <div class="field"><label for="sheetPassword">Chave de Acesso</label><input type="password" id="sheetPassword" class="sheet-input"></div>
+            </div>
+            <p class="sheet-hint">Ao salvar, um arquivo <code>.js</code> com esta ficha é baixado — envie-o ao administrador do site para ativar seu acesso permanente.</p>
+          </div>
+
+          <div class="sheet-save-bar">
+            <button type="submit" class="btn-primary">Salvar Ficha</button>
+          </div>
+        </form>
+
+        <button id="logoutBtn" class="btn-logout">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+          Encerrar Sessão
+        </button>
       </div>
 
     </div>
@@ -183,6 +307,7 @@
   <script src="js/users.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/dashboard.js"></script>
+  <script src="js/sheet.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

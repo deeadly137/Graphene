@@ -38,11 +38,45 @@ const GrapheneAuth = {
       capsuleModel: capsules[Math.floor(Math.random() * capsules.length)],
       capsuleState: 'Em Espera',
       biometric: { bloodType: '—', height: '—', weight: '—', age: '—', gender: '—' },
+      sheet: (typeof ARKA_SHEET_META !== 'undefined') ? ARKA_SHEET_META.defaultSheet() : null,
       authenticatedAt: new Date().toISOString(),
       guest: true
     };
     sessionStorage.setItem('graphene_session', JSON.stringify(sessionData));
     window.location.href = 'dashboard.html';
+  },
+
+  // Cria uma sessão local para um operador recém-registrado. Como o site
+  // não tem backend, isto NÃO cadastra o operador em ARKA_USERS — apenas
+  // permite que ele preencha a Ficha e gere o arquivo para envio ao
+  // administrador (ver updateUser / dashboard "Salvar Ficha").
+  registerOperator: function (data) {
+    const sessionData = {
+      id: 'ARK-' + Math.floor(1000 + Math.random() * 9000) + '-OP',
+      username: String(data.username).trim(),
+      password: data.password,
+      name: data.name,
+      accessLevel: 'Nível 1 (Recruta)',
+      capsuleModel: data.capsuleModel || 'Arcturus MK-III',
+      capsuleState: 'Em Espera',
+      biometric: { bloodType: '—', height: '—', weight: '—', age: '—', gender: '—' },
+      sheet: (typeof ARKA_SHEET_META !== 'undefined') ? ARKA_SHEET_META.defaultSheet() : null,
+      authenticatedAt: new Date().toISOString(),
+      guest: false,
+      registered: true
+    };
+    localStorage.setItem('graphene_session', JSON.stringify(sessionData));
+    window.location.href = 'dashboard.html#tab-user';
+    return sessionData;
+  },
+
+  // Substitui a sessão ativa por uma versão atualizada (usado ao salvar a
+  // Ficha do Operador), preservando o mesmo tipo de armazenamento (sessão
+  // de convidado permanece em sessionStorage; demais em localStorage).
+  updateUser: function (updatedUser) {
+    const usesSession = !!sessionStorage.getItem('graphene_session');
+    const storage = usesSession ? sessionStorage : localStorage;
+    storage.setItem('graphene_session', JSON.stringify(updatedUser));
   },
 
   logout: function () {
@@ -104,17 +138,50 @@ document.addEventListener('DOMContentLoaded', () => {
     guestBtn.addEventListener('click', () => GrapheneAuth.loginAsGuest());
   }
 
-  document.querySelectorAll('.demo-chip').forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const u = document.getElementById('usernameInput');
-      const p = document.getElementById('passwordInput');
-      if (u && p) {
-        u.value = chip.dataset.username;
-        p.value = chip.dataset.password;
-        u.focus();
-      }
+  // Alternância entre "Entrar" e "Registrar Operador" em login.html
+  const modeBtns = document.querySelectorAll('.auth-mode-btn');
+  if (modeBtns.length) {
+    modeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = btn.dataset.mode;
+        modeBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.auth-mode-panel').forEach((p) => {
+          p.classList.toggle('active', p.dataset.modePanel === mode);
+        });
+      });
     });
-  });
+  }
+
+  const registerForm = document.getElementById('registerForm');
+  const registerError = document.getElementById('registerError');
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('regNameInput').value.trim();
+      const username = document.getElementById('regUsernameInput').value.trim();
+      const password = document.getElementById('regPasswordInput').value;
+      const confirm = document.getElementById('regConfirmInput').value;
+      const capsuleModel = document.getElementById('regCapsuleInput').value;
+
+      let error = '';
+      if (!name || !username || !password) error = 'Preencha todos os campos obrigatórios.';
+      else if (!/^[a-zA-Z0-9_]{3,24}$/.test(username)) error = 'O ID de operador deve ter de 3 a 24 caracteres (letras, números ou "_").';
+      else if (password.length < 6) error = 'A chave de acesso precisa ter ao menos 6 caracteres.';
+      else if (password !== confirm) error = 'As chaves de acesso não coincidem.';
+
+      if (error) {
+        if (registerError) {
+          registerError.querySelector('span').textContent = error;
+          registerError.classList.add('is-visible');
+        }
+        return;
+      }
+      if (registerError) registerError.classList.remove('is-visible');
+
+      GrapheneAuth.registerOperator({ name, username, password, capsuleModel });
+    });
+  }
 
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) {

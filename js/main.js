@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   setupNavToggle();
   markActiveNav();
-  renderTicker();
   setupReveal();
   setupTabsGeneric(); // no-op fora do dashboard
   const yearEl = document.getElementById('footerYear');
@@ -38,17 +37,7 @@ function markActiveNav() {
   });
 }
 
-function renderTicker() {
-  const track = document.getElementById('tickerTrack');
-  if (!track || typeof GRAPHENE_DATA === 'undefined') return;
 
-  const items = GRAPHENE_DATA.ticker.map((item) => `
-    <span class="ticker-item${item.alert ? ' is-alert' : ''}">${item.text}: <strong>${item.value}</strong></span>
-  `).join('');
-
-  // duplica para permitir o loop contínuo do marquee
-  track.innerHTML = items + items;
-}
 
 function setupReveal() {
   const targets = document.querySelectorAll('.reveal');
